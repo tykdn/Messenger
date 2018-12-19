@@ -1,0 +1,11 @@
+**/node_modules/
+**/*.test.*
+build
+# proxy
+local.js
+/public/dll/
+.vscode
+.history
+.idea/
+package-lock.json
+config-overrides.js
