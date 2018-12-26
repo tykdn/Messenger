@@ -31,14 +31,11 @@ export default class InformationList extends Component {
       dataSource: ds.cloneWithRows(this.props.source)
     };
   }
-
-  _itemClickCallback(rowData) {}
-
   _renderItem(rowData, sectionID, rowID, highlightRow) {
     if (Platform.OS === "ios") {
       return (
         <TouchableOpacity
-          onPress={this._itemClickCallback.bind(this, rowData)}
+          onPress={this.props.goToChat}
           activeOpacity={theme.btnActiveOpacity}
         >
           {this._renderItemContent(rowData)}
@@ -46,9 +43,7 @@ export default class InformationList extends Component {
       );
     } else if (Platform.OS === "android") {
       return (
-        <TouchableNativeFeedback
-          onPress={this._itemClickCallback.bind(this, rowData)}
-        >
+        <TouchableNativeFeedback onPress={this.props.goToChat}>
           {this._renderItemContent(rowData)}
         </TouchableNativeFeedback>
       );

@@ -2,6 +2,7 @@ import React from "react";
 import { createAppContainer, createStackNavigator } from "react-navigation";
 import Page from "./navigation";
 import Write from "./write";
+import Chat from "./chat";
 
 const RootStack = createStackNavigator(
   {
@@ -11,6 +12,10 @@ const RootStack = createStackNavigator(
     },
     Write: {
       screen: Write,
+      navigationOptions: () => ({})
+    },
+    Chat: {
+      screen: Chat,
       navigationOptions: () => ({})
     }
   },

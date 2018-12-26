@@ -6,6 +6,7 @@ import theme from "../../config/theme";
 export default class HomeTab extends Component {
   constructor(props) {
     super(props);
+    this.navigation = this.props.navigation;
     this.state = {
       refreshing: false,
       loadedData: false,
@@ -136,10 +137,17 @@ export default class HomeTab extends Component {
       </ScrollView>
     );
   }
-
+  goToChat() {
+    this.navigation.navigate("Chat", { key: 1, id: 2 });
+  }
   items() {
     if (!this.state.refreshing || this.state.loadedData) {
-      return <InformationList source={this.state.messages} />;
+      return (
+        <InformationList
+          goToChat={this.goToChat.bind(this)}
+          source={this.state.messages}
+        />
+      );
     }
   }
 

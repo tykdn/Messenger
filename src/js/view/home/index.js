@@ -10,6 +10,7 @@ import SearchBar from "../../component/searchBar";
 export default class Home extends Component {
   constructor(props) {
     super(props);
+    this.navigation = this.props.navigation;
     this.state = {
       tabNames: ["消息", "在线", "群聊"]
     };
@@ -30,7 +31,14 @@ export default class Home extends Component {
           tabBarUnderlineStyle={theme.scrollView.underlineStyle}
         >
           {this.state.tabNames.map((item, i) => {
-            return <HomeTab tabLabel={item} key={i} tabTag={item} />;
+            return (
+              <HomeTab
+                navigation={this.navigation}
+                tabLabel={item}
+                key={i}
+                tabTag={item}
+              />
+            );
           })}
         </ScrollableTabView>
       </View>
