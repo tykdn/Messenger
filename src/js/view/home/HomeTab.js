@@ -1,14 +1,120 @@
 import React, { Component } from "react";
-import { View, ScrollView, RefreshControl, Text } from "react-native";
+import { ScrollView, RefreshControl } from "react-native";
+import InformationList from "../../component/informationList";
 import theme from "../../config/theme";
 
 export default class HomeTab extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      refreshing: true,
+      refreshing: false,
       loadedData: false,
-      dataBlob: []
+      messages: [
+        {
+          tags: [1, 2],
+          category: "ee",
+          content: "xiaoxiaomin",
+          collectionCount: "message",
+          title: "xiaoxiaomin",
+          user: {},
+          url: "url",
+          time: "2018-12-26",
+          commentsCount: 10,
+          viewsCount: "dfwfw",
+          screenshot: {}
+        },
+        {
+          tags: [1, 2],
+          category: "ee",
+          content: "xiaoxiaomin",
+          collectionCount: "message",
+          title: "xiaoxiaomin",
+          user: {},
+          url: "url",
+          time: "2018-12-26",
+          commentsCount: 10,
+          viewsCount: "dfwfw",
+          screenshot: {}
+        },
+        {
+          tags: [1, 2],
+          category: "ee",
+          content: "xiaoxiaomin",
+          collectionCount: "message",
+          title: "xiaoxiaomin",
+          user: {},
+          url: "url",
+          time: "2018-12-26",
+          commentsCount: 10,
+          viewsCount: "dfwfw",
+          screenshot: {}
+        },
+        {
+          tags: [1, 2],
+          category: "ee",
+          content: "xiaoxiaomin",
+          collectionCount: "message",
+          title: "xiaoxiaomin",
+          user: {},
+          url: "url",
+          time: "2018-12-26",
+          commentsCount: 10,
+          viewsCount: "dfwfw",
+          screenshot: {}
+        },
+        {
+          tags: [1, 2],
+          category: "ee",
+          content: "xiaoxiaomin",
+          collectionCount: "message",
+          title: "xiaoxiaomin",
+          user: {},
+          url: "url",
+          time: "2018-12-26",
+          commentsCount: 10,
+          viewsCount: "dfwfw",
+          screenshot: {}
+        },
+        {
+          tags: [1, 2],
+          category: "ee",
+          content: "xiaoxiaomin",
+          collectionCount: "message",
+          title: "xiaoxiaomin",
+          user: {},
+          url: "url",
+          time: "2018-12-26",
+          commentsCount: 10,
+          viewsCount: "dfwfw",
+          screenshot: {}
+        },
+        {
+          tags: [1, 2],
+          category: "ee",
+          content: "xiaoxiaomin",
+          collectionCount: "message",
+          title: "xiaoxiaomin",
+          user: {},
+          url: "url",
+          time: "2018-12-26",
+          commentsCount: 10,
+          viewsCount: "dfwfw",
+          screenshot: {}
+        },
+        {
+          tags: [1, 2],
+          category: "ee",
+          content: "xiaoxiaomin",
+          collectionCount: "message",
+          title: "xiaoxiaomin",
+          user: {},
+          url: "url",
+          time: "2018-12-26",
+          commentsCount: 10,
+          viewsCount: "dfwfw",
+          screenshot: {}
+        }
+      ]
     };
   }
   render() {
@@ -26,18 +132,14 @@ export default class HomeTab extends Component {
           />
         }
       >
-        {this._renderContents()}
+        {this.items()}
       </ScrollView>
     );
   }
 
-  _renderContents() {
+  items() {
     if (!this.state.refreshing || this.state.loadedData) {
-      return (
-        <View>
-          <Text>首页</Text>
-        </View>
-      );
+      return <InformationList source={this.state.messages} />;
     }
   }
 

@@ -1,18 +1,21 @@
-import React, { Component } from "react";
-import {createAppContainer, createStackNavigator} from 'react-navigation';
+import React from "react";
+import { createAppContainer, createStackNavigator } from "react-navigation";
 import Page from "./navigation";
-import Write from './write'
+import Write from "./write";
 
-const RootStack = createStackNavigator({
+const RootStack = createStackNavigator(
+  {
     Home: {
-        screen: Page,
-        navigationOptions: () => ({}),
+      screen: Page,
+      navigationOptions: () => ({})
     },
-    Write:{
-        screen: Write,
-        navigationOptions: () => ({}),
+    Write: {
+      screen: Write,
+      navigationOptions: () => ({})
     }
-},{headerMode: 'none'});
+  },
+  { headerMode: "none" }
+);
 const Root = createAppContainer(RootStack);
 
 export default Root;

@@ -192,7 +192,7 @@ export default class TabBar extends Component {
     };
 
     return (
-      <View style={{ flexDirection: "row-reverse", flex: 1 }}>
+      <View style={{ flexDirection: "row-reverse" }}>
         <View style={[styles.container]} onLayout={this.onContainerLayout}>
           <ScrollView
             ref={scrollView => {

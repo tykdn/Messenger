@@ -33,10 +33,10 @@ const AppNavigator = createBottomTabNavigator({
   User: {
     screen: ProfileScreen,
     navigationOptions: {
-      tabBarLabel: "用户",
+      tabBarLabel: "通话",
       tabBarIcon: ({ tintColor, focused }) => (
         <Ionicons
-          name={"users"}
+          name={"phone"}
           size={26}
           style={focused ? { color: tintColor } : { color: "#dbdbdb" }}
         />
@@ -52,6 +52,19 @@ const AppNavigator = createBottomTabNavigator({
       )
     }
   },
+  Discover: {
+    screen: HomeScreen,
+    navigationOptions: {
+      tabBarLabel: "用户",
+      tabBarIcon: ({ tintColor, focused }) => (
+        <Ionicons
+          name={"users"}
+          size={26}
+          style={focused ? { color: tintColor } : { color: "#dbdbdb" }}
+        />
+      )
+    }
+  },
   Game: {
     screen: ProfileScreen,
     navigationOptions: {
@@ -59,19 +72,6 @@ const AppNavigator = createBottomTabNavigator({
       tabBarIcon: ({ tintColor, focused }) => (
         <Ionicons
           name={"gamepad"}
-          size={26}
-          style={focused ? { color: tintColor } : { color: "#dbdbdb" }}
-        />
-      )
-    }
-  },
-  Discover: {
-    screen: HomeScreen,
-    navigationOptions: {
-      tabBarLabel: "发现",
-      tabBarIcon: ({ tintColor, focused }) => (
-        <Ionicons
-          name={"braille"}
           size={26}
           style={focused ? { color: tintColor } : { color: "#dbdbdb" }}
         />
