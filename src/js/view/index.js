@@ -9,7 +9,9 @@ const RootStack = createStackNavigator(
   {
     Home: {
       screen: Page,
-      navigationOptions: () => ({})
+      navigationOptions: () => ({
+        header: null
+      })
     },
     Write: {
       screen: Write,
@@ -24,7 +26,9 @@ const RootStack = createStackNavigator(
       navigationOptions: () => ({})
     }
   },
-  { headerMode: "none" }
+  {
+    initialRouteName: "Home"
+  }
 );
 const Root = createAppContainer(RootStack);
 

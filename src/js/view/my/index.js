@@ -35,10 +35,13 @@ export default class My extends Component {
       ]
     };
   }
-
+  static navigationOptions = {
+    title: "Home"
+  };
   render() {
     return (
       <View>
+        <Text>23423423</Text>
         <ScrollView>
           {this.state.dataArray.map((item, i) => {
             return (
