@@ -17,7 +17,8 @@ export default class Home extends Component {
     this.state = {
       tabNames: ["消息", "在线", "群聊"]
     };
-    this._handleTabNames = this._handleTabNames.bind(this);
+    this.handleTabNames = this.handleTabNames.bind(this);
+    this.showPage = this.showPage.bind(this);
   }
 
   render() {
@@ -25,19 +26,21 @@ export default class Home extends Component {
       <View style={styles.container}>
         <View style={styles.header}>
           <View style={styles.avatar}>
-            <Avatar
-              size={px2dp(30)}
-              image={{
-                uri:
-                  "https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1545814744&di=88720d8768c3beec516c92686d5f2270&src=http://images.freeimages.com/images/large-previews/461/dog-1379928.jpg"
-              }}
-            />
+            <TouchableOpacity onPress={this.go.bind(this, "My")}>
+              <Avatar
+                size={px2dp(30)}
+                image={{
+                  uri:
+                    "https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1545814744&di=88720d8768c3beec516c92686d5f2270&src=http://images.freeimages.com/images/large-previews/461/dog-1379928.jpg"
+                }}
+              />
+            </TouchableOpacity>
           </View>
-          <View style={styles.searchbar}>
+          <View style={styles.searchBar}>
             <SearchBar />
           </View>
           <View style={styles.icon}>
-            <TouchableOpacity onPress={this._pullDownCallback.bind(this)}>
+            <TouchableOpacity onPress={this.go.bind(this, "Write")}>
               <Ionicons
                 name={"edit"}
                 size={px2dp(30)}
@@ -46,7 +49,6 @@ export default class Home extends Component {
             </TouchableOpacity>
           </View>
         </View>
-
         <ScrollableTabView
           renderTabBar={() => <TabBar />}
           tabBarBackgroundColor="rgb(248,248,248)"
@@ -56,34 +58,38 @@ export default class Home extends Component {
           tabBarTextStyle={{ fontSize: theme.scrollView.fontSize }}
           tabBarUnderlineStyle={theme.scrollView.underlineStyle}
         >
-          {this.state.tabNames.map((item, i) => {
-            return (
-              <MessageList
-                navigation={this.navigation}
-                tabLabel={item}
-                key={i}
-                tabTag={item}
-              />
-            );
-          })}
+          {this.showPage(this.state.tabNames)}
         </ScrollableTabView>
       </View>
     );
   }
-
-  _pullDownCallback() {
-    this.props.navigation.navigate("Write");
+  showPage(tabs) {
+    const pages = [];
+    tabs.map((item, i) => {
+      pages.push(
+        <MessageList
+          navigation={this.navigation}
+          tabLabel={item}
+          key={i}
+          tabTag={item}
+        />
+      );
+    });
+    return pages;
+  }
+  go(page) {
+    this.props.navigation.navigate(page);
   }
 
   componentDidMount() {
-    RCTDeviceEventEmitter.addListener("valueChange", this._handleTabNames);
+    RCTDeviceEventEmitter.addListener("valueChange", this.handleTabNames);
   }
 
   componentWillUnmount() {
-    RCTDeviceEventEmitter.removeListener("value", this._handleTabNames);
+    RCTDeviceEventEmitter.removeListener("value", this.handleTabNames);
   }
 
-  _handleTabNames(tabNames) {
+  handleTabNames(tabNames) {
     this.setState({ tabNames: tabNames });
   }
 }
@@ -96,7 +102,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row"
   },
-  searchbar: {
+  searchBar: {
     flex: 1
   },
   avatar: {
