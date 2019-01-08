@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet ,TouchableOpacity} from "react-native";
 import theme from "../../config/theme";
 import ScrollableTabView from "react-native-scrollable-tab-view";
+import Ionicons from "react-native-vector-icons/FontAwesome";
 import TabBar from "../../component/tabBar";
-import HomeTab from "./HomeTab";
+import MessageList from "./messageList";
 import RCTDeviceEventEmitter from "RCTDeviceEventEmitter";
 import SearchBar from "../../component/searchBar";
+import px2dp from "../../utils/px2dp";
+import Avatar from "../../component/avatar";
 
 export default class Home extends Component {
   constructor(props) {
@@ -20,7 +23,30 @@ export default class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <SearchBar onPress={this._pullDownCallback.bind(this)} />
+          <View style={styles.header}>
+            <View style={styles.avatar}>
+              <Avatar
+                  size={px2dp(30)}
+                  image={{
+                      uri:
+                          "https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1545814744&di=88720d8768c3beec516c92686d5f2270&src=http://images.freeimages.com/images/large-previews/461/dog-1379928.jpg"
+                  }}
+              />
+            </View>
+                <View style={styles.searchbar}>
+              <SearchBar  />
+                </View>
+                    <View style={styles.icon}  >
+                        <TouchableOpacity onPress={this._pullDownCallback.bind(this)}>
+                            <Ionicons
+                                name={"edit"}
+                                size={px2dp(30)}
+                                style={{color:'rgb(110,148,211)'}}
+                            />
+                        </TouchableOpacity>
+                    </View>
+          </View>
+
         <ScrollableTabView
           renderTabBar={() => <TabBar />}
           tabBarBackgroundColor="rgb(248,248,248)"
@@ -32,7 +58,7 @@ export default class Home extends Component {
         >
           {this.state.tabNames.map((item, i) => {
             return (
-              <HomeTab
+              <MessageList
                 navigation={this.navigation}
                 tabLabel={item}
                 key={i}
@@ -67,6 +93,22 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.pageBackgroundColor
   },
+    header:{
+      flexDirection: 'row'
+    },
+    searchbar:{
+      flex:1
+    },
+    avatar:{
+      justifyContent: 'center',
+      marginRight: px2dp(15),
+      marginLeft:px2dp(10),
+    },
+    icon:{
+      justifyContent: 'center',
+      marginLeft:px2dp(15),
+      marginRight: px2dp(10),
+    },
   text: {
     color: theme.text.color,
     fontSize: theme.text.fontSize

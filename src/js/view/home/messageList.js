@@ -3,7 +3,7 @@ import { ScrollView, RefreshControl } from "react-native";
 import InformationList from "../../component/informationList";
 import theme from "../../config/theme";
 
-export default class HomeTab extends Component {
+export default class MessageList extends Component {
   constructor(props) {
     super(props);
     this.navigation = this.props.navigation;
