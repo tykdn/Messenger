@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, FlatList, Button } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
 import data from "./data/config";
 import config from "../../config";
 import {
@@ -7,6 +8,9 @@ import {
   Bubble,
   SystemMessage
 } from "../../component/chat/GiftedChat";
+import px2dp from "../../utils/px2dp";
+import TextButton from "../../component/textButton";
+import Avatar from "../../component/avatar";
 const ip = config.url;
 
 export default class Chat extends React.Component {
@@ -16,13 +20,9 @@ export default class Chat extends React.Component {
       messages: [],
       asksarray: [],
       surroundings: [],
-      focuss: [],
       loadEarlier: true,
       typingText: null,
       isLoadingEarlier: false,
-      isOpen: false,
-      checked: false,
-      keyword: "",
       id: props.navigation.state.params.id,
       key: "facility"
     };
@@ -38,13 +38,36 @@ export default class Chat extends React.Component {
     this.renderCustormConentpart = this.renderCustormConentpart.bind(this); //卡片
     this.renderInputToolbar = this.renderInputToolbar.bind(this);
     this.renderCustormHeadpart = this.renderCustormHeadpart.bind(this); //说明
-    this.renderModal = this.renderModal.bind(this);
     this.gotoHuman = this.gotoHuman.bind(this);
-    this.getFocusList = this.getFocusList.bind(this);
-    this.renderFocusModal = this.renderFocusModal.bind(this);
+    this.fetchData = this.fetchData.bind(this);
     this._isAlright = null;
   }
-
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: "xiaoxiaomin >",
+      headerLeft: (
+        <View style={{ paddingLeft: px2dp(16) }}>
+          <TextButton
+            onPress={() => navigation.goBack()}
+            text={"< 首页"}
+            fontSize={px2dp(15)}
+            color={"rgb(92,133,194)"}
+          />
+        </View>
+      ),
+      headerRight: (
+        <View style={{ paddingRight: px2dp(16) }}>
+          <Icon name={"phone"} size={px2dp(20)} />
+        </View>
+      ),
+      headerTintColor: "#000",
+      headerTitleStyle: {
+        flex: 1,
+        textAlign: "center",
+        fontWeight: "500"
+      }
+    };
+  };
   componentWillMount() {
     const { key } = this.state;
     this._isMounted = true;
@@ -65,87 +88,21 @@ export default class Chat extends React.Component {
       }
     }));
   }
-  getFocusList() {
-    let url = config.url + "favorites/detail";
-    // Util.get(url).then((data)=>{
-    //     console.log("focus list",data);
-    //     this.setState({
-    //         focuss:data.reply
-    //     })
-    // });
-  }
-  getFocusanswer() {
-    const { key, id } = this.state;
-    let url1 = config.url + "favorites/result";
-    let param = {
-      hotel: id
-    };
-    // Util.get(url1,param).then((data1)=>{
-    //     console.log("focus anse111111r",data1,data1["reply"].length);
-    //     this.setState(() => {
-    //         return {
-    //             messages: [data["chatHead"][key]['fw']],
-    //         };
-    //     },()=>{
-    //         for(let i =0;i<data1["reply"].length;i++){
-    //             console.log("this.onReceive(\"订阅的问题是：\"+data1[\"reply\"][i].key,2);",i);
-    //             this.onReceive("订阅的问题是："+data1["reply"][i].key,2);
-    //             for(let n =0;n<data1["reply"][i].value.length;n++){
-    //                 if(typeof data1["reply"][i].value[n]==="string"){
-    //                     this.onReceive(data1["reply"][i].value[n],2);
-    //                 }else if(typeof data1["reply"][i].value[n]==="object"){
-    //                     let tem = [];
-    //                     data1["reply"][i].value[n].map((item,index)=>tem.push(<Text key={index}>
-    //                         {'\r\n'}{index+1+'.'+item}
-    //                     </Text>));
-    //                     this.onReceive(tem,2);
-    //                 }
-    //             }
-    //         }
-    //     });
-    // })
-  }
   componentDidMount() {
-    const { key, id } = this.state;
-    // if(key==='arround'){
-    //     let url = config.url+'hotels/'+id+'/surroundings/';
-    //     Util.get(url).then((data)=>{
-    //         console.log("surroundings",data);
-    //        this.setState({
-    //            surroundings:data.reply
-    //        })
-    //     })
-    // }
-    if (key === "focus") {
-      this.getFocusList();
-      this.getFocusanswer();
-    }
-    // if(key==="question"){
-    //     let url = config.url+'hotels/'+id+'/asks/';
-    //     Util.get(url).then((data)=>{
-    //         console.log("5,asks",data);
-    //         this.setState({
-    //             asksarray:data.reply
-    //         })
-    //     })
-    // }
+    this.fetchData();
   }
   componentWillUnmount() {
     this._isMounted = false;
   }
   fetchData(type, url, param1, param2) {
-    const { id } = this.state;
-    let url2 = config.url + "hotels/" + id + "/asks/";
-    // return {
-    //     messagepart: Util.get(url,param1).then((data)=>{
-    //         console.log("messagepart",data);
-    //         return data
-    //     }),
-    //     askspart: Util.get(url2,param2).then((data)=>{
-    //      console.log("askspart",data);
-    //      return data
-    //  }),
-    // }
+    // const { id } = this.state;
+    // let url = config.url+'hotels/'+id+'/asks/';
+    // Util.get(url).then((data)=>{
+    //     console.log("5,asks",data);
+    //     this.setState({
+    //         asksarray:data.reply
+    //     })
+    // })
   }
   onLoadEarlier() {
     this.setState(previousState => {
@@ -153,18 +110,6 @@ export default class Chat extends React.Component {
         isLoadingEarlier: true
       };
     });
-
-    // setTimeout(() => {
-    //     if (this._isMounted === true) {
-    //         this.setState((previousState) => {
-    //             return {
-    //                 messages: GiftedChat.prepend(previousState.messages, require('./data/old_messages.js')),
-    //                 loadEarlier: false,
-    //                 isLoadingEarlier: false,
-    //             };
-    //         });
-    //     }
-    // }, 1000); // simulating network
   }
 
   onSend(messages = []) {
@@ -177,25 +122,6 @@ export default class Chat extends React.Component {
         messages: GiftedChat.append(previousState.messages, messages)
       };
     });
-    // if(key==="question"){
-    //     let url = config.url+'hotels/'+id+'/asks/answer/';
-    //     let param2 ={
-    //         name:messages[0].text
-    //     };
-    //     Util.get(url,param2).then((data)=>{
-    //         for(let i =0;i<data["reply"].length;i++){
-    //             if(typeof data["reply"][i]==="string"){
-    //                 this.onReceive(data["reply"][i],2);
-    //             }else if(typeof data["reply"][i]==="object"){
-    //                 let tem = [];
-    //                 data["reply"][i].map((item,index)=>tem.push(<Text key={index}>
-    //                     {'\r\n'}{index+1+'.'+item}
-    //                 </Text>));
-    //                 this.onReceive(tem,2);
-    //             }
-    //         }
-    //     })
-    // }
     if (key === "facility") {
       let url = config.url + "hotels/" + id + "/facility/";
       let param1 = {
@@ -218,36 +144,6 @@ export default class Chat extends React.Component {
         });
       }
     }
-    // let askanswer = this.fetchData('',url,param1,param2);
-    //
-    // askanswer.messagepart.then(data=>{
-    //     for(let i =0;i<data["reply"].length;i++){
-    //         if(typeof data["reply"][i]==="string"){
-    //             this.onReceive(data["reply"][i],2);
-    //         }else if(typeof data["reply"][i]==="object"){
-    //             let tem = [];
-    //             data["reply"][i].map((item,index)=>tem.push(<Text key={index}>
-    //                 {'\r\n'}{index+1+'.'+item}
-    //             </Text>));
-    //             console.log(tem);
-    //             this.onReceive(tem,2);
-    //         }
-    //     }
-    //     this.setState((previousState) => {
-    //         return {
-    //             typingText: null
-    //         };
-    //     });
-    // });
-    // askanswer.askspart.then(data=>{
-    //     this.setState({
-    //         asksarray:data.reply
-    //     },()=>{
-    //         if(this.state.asksarray.length>0){
-    //             this.onReceive("以下是问大家中提到最多的问题，请参考",2)
-    //         }
-    //     })
-    //  });
   }
 
   onReceive(text, idcard, avator = ip + "static/robot.png") {
@@ -278,59 +174,48 @@ export default class Chat extends React.Component {
           style={{
             height: "100%",
             alignItems: "center",
-            justifyContent: "center"
+            justifyContent: "center",
+            flexDirection: "row",
+            flex: 1
           }}
         >
-          <Text style={{ fontSize: 14 }}>请输入设施或服务名称</Text>
+          <View
+            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          >
+            <Icon
+              name={"plus-circle"}
+              size={px2dp(20)}
+              color={"rgb(71,133,246)"}
+              style={{}}
+            />
+          </View>
+          <View
+            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          >
+            <Icon name={"camera"} size={px2dp(20)} color={"#ccc"} />
+          </View>
+          <View
+            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          >
+            <Icon name={"image"} size={px2dp(20)} color={"#ccc"} style={{}} />
+          </View>
+          <View
+            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          >
+            <Icon
+              name={"microphone"}
+              size={px2dp(20)}
+              color={"#ccc"}
+              style={{}}
+            />
+          </View>
         </View>
       ) : null;
     return action;
   }
-  //周边
-  renderArroud() {
-    return (
-      <View
-        style={{ flex: 1, flexDirection: "column", backgroundColor: "white" }}
-      >
-        <Button onPress={() => this.setState({ isOpen: true })} title="周边" />
-      </View>
-    );
-  }
-
-  //政策
-  renderPolicy() {
-    return (
-      <View
-        style={{ flex: 1, flexDirection: "column", backgroundColor: "white" }}
-      >
-        <Button onPress={() => this.setState({ isOpen: true })} title="政策" />
-      </View>
-    );
-  }
-
-  //我的关注
-  renderMine() {
-    return (
-      <View
-        style={{ flex: 1, flexDirection: "column", backgroundColor: "white" }}
-      >
-        <Button
-          onPress={() => this.setState({ isOpen: true })}
-          title="修改订阅的问题"
-        />
-      </View>
-    );
-  }
   renderInputToolbar() {
     const { key } = this.state;
-    const footer =
-      key === "arround"
-        ? this.renderArroud()
-        : null || key === "policy"
-        ? this.renderPolicy()
-        : null || key === "focus"
-        ? this.renderMine()
-        : null;
+    const footer = null;
     return footer;
   }
 
@@ -374,94 +259,62 @@ export default class Chat extends React.Component {
     this.onReceive("您好，工号2018号客服为您服务。", 3, ip + "static/kf.png");
   }
   renderCustormConentpart() {
-    const { key, asksarray } = this.state;
+    const { name } = this.state;
     const tip = (
-      <Text style={{ paddingLeft: 10 }}>
-        如果还有问题，欢迎点击
-        <Text onPress={() => this.gotoHuman()} style={{ color: "#6DB8E5" }}>
-          {" "}
-          "人工服务"
-        </Text>
-        ，与我们的客服小哥哥小姐姐聊一下喔。
-      </Text>
+      <View style={{ flexDirection: "row", height: 50 }}>
+        <Icon name={"hand-paper"} size={px2dp(30)} color={"yellow"} />
+        <Text>向xiaoxiao min问好</Text>
+      </View>
     );
 
-    return null;
+    return tip;
   }
   renderCustormHeadpart() {
-    const { key } = this.state;
     return (
-      <View style={styles.chatHead}>
-        <Text style={styles.textTile}>{data.chatHead[key].title}</Text>
-        <Text style={styles.textContainer}>{data.chatHead[key].content}</Text>
-      </View>
-    );
-  }
-  clickFilter(keyword, url) {
-    let message = [
-      {
-        text: keyword
-      }
-    ];
-    let param2 = {
-      name: keyword
-    };
-    this.tuntunanswer(message, url, null, param2);
-    this.setState(
-      {
-        isOpen: false
-      },
-      () => this.onReceive(keyword, 1, ip + "static/user.png")
-    );
-  }
-  renderModal() {
-    return null;
-  }
-  myfocus(name, value) {
-    let url = config.url + "favorites/add/";
-    let param = {
-      value,
-      name
-    };
-    // console.log(param);
-    // Util.post(url,param).then((data)=>{
-    //     console.log(param,data);
-    //     this.getFocusList();
-    //     this.getFocusanswer();
-    // });
-  }
-  _renderItem = ({ item }) => (
-    <View>
-      <Text style={{ padding: 10 }}>{item.name}</Text>
-      <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap" }}>
-        {item["list"].map((i, ind) => (
-          <CheckBox
-            center
-            textStyle={{ fontSize: 14 }}
-            containerStyle={{ height: 30, justifyContent: "center" }}
-            key={ind}
-            iconType="material"
-            checkedIcon="done"
-            uncheckedIcon="add"
-            checkedColor="red"
-            title={i.key}
-            onPress={this.myfocus.bind(this, item.name, i.key)}
-            checked={i.value}
+      <View style={styles.avatar}>
+        <View
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            width: 120
+          }}
+        >
+          <Avatar
+            size={px2dp(80)}
+            image={{
+              uri:
+                "https://timgsa.baidu.com/timg?image&qualit" +
+                "y=80&size=b10000_10000&sec=1545814744&di=88720d8768c3be" +
+                "ec516c92686d5f2270&src=http://images.freeimages.com/images/large-previews/461/dog-1379928.jpg"
+            }}
           />
-        ))}
+        </View>
+        <View style={{ flex: 1, justifyContent: "center" }}>
+          <Text
+            style={{
+              fontSize: 20,
+              color: "black",
+              paddingTop: 10,
+              paddingBottom: 10
+            }}
+          >
+            Xiaoming Xiao
+          </Text>
+          <Text style={{ fontSize: 16, color: "black", paddingBottom: 10 }}>
+            单独使用Messenger，没有Facebook账户
+          </Text>
+          <Text style={{ fontSize: 16, color: "#ccc", paddingBottom: 10 }}>
+            所在地：仁川广城市
+          </Text>
+        </View>
       </View>
-    </View>
-  );
-
-  renderFocusModal() {
-    const { focuss } = this.state;
-    return <FlatList data={focuss} renderItem={this._renderItem} />;
+    );
   }
   render() {
     const { key } = this.state;
     const footerbarheight = key === "facility" || key === "question" ? 44 : 36;
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: "white" }}>
         <GiftedChat
           messages={this.state.messages}
           onSend={this.onSend}
@@ -499,17 +352,18 @@ const styles = StyleSheet.create({
     marginRight: 10,
     marginBottom: 0
   },
+  avatar: {
+    height: px2dp(150),
+    alignItems: "center",
+    justifyContent: "center",
+    borderBottomWidth: 1,
+    flexDirection: "row",
+    borderBottomColor: "#ccc",
+    backgroundColor: "white"
+  },
   chatHead: {
     padding: 10,
     backgroundColor: "white"
-  },
-  textContainer: {
-    fontSize: 14,
-    color: "black"
-  },
-  textTile: {
-    fontSize: 16,
-    fontWeight: "bold"
   },
   footerText: {
     fontSize: 14,
@@ -520,18 +374,5 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: "left",
     justifyContent: "center"
-  },
-  modal: {
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  modal1: {
-    height: "100%"
-  },
-  modal3: {
-    height: 400
-  },
-  modal4: {
-    height: 200
   }
 });
