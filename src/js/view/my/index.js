@@ -1,43 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import {
-  Text,
-  View,
-  StyleSheet,
-  PixelRatio,
-  Switch,
-  ScrollView,
-  TouchableOpacity
-} from "react-native";
+import mySetting from "../../config/mySettings";
+import { Text, View, StyleSheet, PixelRatio, ScrollView } from "react-native";
 import Ionicons from "react-native-vector-icons/FontAwesome";
 import TextButton from "../../component/textButton";
 import theme from "../../config/theme";
 import px2dp from "../../utils/px2dp";
-import Icon from "react-native-vector-icons/Ionicons";
 import Avatar from "../../component/avatar";
 
 export default class My extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      dataArray: [
-        { name: "通知", value: false },
-        { name: "在线状态", value: false },
-        { name: "账号", value: false },
-        { name: "手机", value: false },
-        { name: "用户", value: false },
-        { name: "快拍", value: false },
-        { name: "私密对话", value: false },
-        { name: "流量和存储", value: false },
-        { name: "表情选项", value: false },
-        { name: "切换账户", value: false },
-        { name: "创建新账户", value: false },
-        { name: "账号设置", value: false },
-        { name: "报告问题", value: false },
-        { name: "帮助", value: false },
-        { name: "法律与政策", value: false }
-      ]
-    };
+    this.rendlist = this.rendlist.bind(this);
   }
   static navigationOptions = ({ navigation }) => {
     return {
@@ -63,6 +37,21 @@ export default class My extends Component {
       }
     };
   };
+  rendlist(list, i) {
+    return (
+      <View style={{ marginBottom: 40 }} key={i}>
+        {list.map((item, index) => (
+          <Item
+            key={index}
+            goto={item.key}
+            value={item.value}
+            name={item.name}
+            icon={item.icon}
+          />
+        ))}
+      </View>
+    );
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -109,11 +98,11 @@ export default class My extends Component {
         </View>
         <View style={{ flex: 1 }}>
           <ScrollView>
-            {this.state.dataArray.map((item, i) => {
-              return (
-                <Item key={i} id={i} name={item.name} isSwitchOn={item.value} />
-              );
-            })}
+            {[
+              this.rendlist(mySetting[0].common, 0),
+              this.rendlist(mySetting[1].user, 1),
+              this.rendlist(mySetting[2].setting, 2)
+            ]}
           </ScrollView>
         </View>
       </View>
@@ -124,20 +113,17 @@ export default class My extends Component {
 class Item extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
-    isSwitchOn: PropTypes.bool
+    icon: PropTypes.object,
+    value: PropTypes.string,
+    goto: PropTypes.string
   };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      isSwitchOn: this.props.isSwitchOn
-    };
-  }
-
   render() {
+    const { goto, name, value, icon } = this.props;
     return (
       <View style={styles.item}>
-        <Icon name="ios-menu" size={px2dp(25)} color="#ccc" />
+        <View style={{ ...styles.icon, backgroundColor: icon.bgc }}>
+          <Ionicons name={icon.key} size={px2dp(25)} color={icon.color} />
+        </View>
         <Text
           style={{
             fontSize: theme.actionBar.fontSize,
@@ -145,24 +131,16 @@ class Item extends Component {
             marginLeft: px2dp(20)
           }}
         >
-          {this.props.name}
+          {name}
         </Text>
         <View
           style={{ flex: 1, flexDirection: "row", justifyContent: "flex-end" }}
         >
-          <Switch
-            onValueChange={this._onValueChange.bind(this)}
-            value={this.state.isSwitchOn}
-          />
+          <Text style={{ marginLeft: 10 }}>{value}</Text>
+          <Ionicons name="angle-right" size={px2dp(20)} color="#ccc" />
         </View>
       </View>
     );
-  }
-
-  _onValueChange(value) {
-    this.setState({
-      isSwitchOn: value
-    });
   }
 }
 
@@ -187,5 +165,16 @@ const styles = StyleSheet.create({
     paddingRight: px2dp(20),
     borderBottomColor: "#ccc",
     borderBottomWidth: 1 / PixelRatio.get()
+  },
+  icon: {
+    width: px2dp(30),
+    height: px2dp(30),
+    borderTopRightRadius: px2dp(5),
+    borderBottomEndRadius: px2dp(5),
+    borderBottomLeftRadius: px2dp(5),
+    borderTopLeftRadius: px2dp(5),
+    justifyContent: "center",
+    backgroundColor: "black",
+    alignItems: "center"
   }
 });
