@@ -3,7 +3,6 @@ import { View, StyleSheet, TouchableOpacity } from "react-native";
 import theme from "../../config/theme";
 import ScrollableTabView from "react-native-scrollable-tab-view";
 import Ionicons from "react-native-vector-icons/FontAwesome";
-import TabBar from "../../component/tabBar";
 import MessageList from "./messageList";
 import RCTDeviceEventEmitter from "RCTDeviceEventEmitter";
 import SearchBar from "../../component/searchBar";
@@ -50,8 +49,7 @@ export default class Home extends Component {
           </View>
         </View>
         <ScrollableTabView
-          renderTabBar={() => <TabBar />}
-          tabBarBackgroundColor="rgb(248,248,248)"
+          tabBarBackgroundColor="white"
           tabBarActiveTextColor="rgb(108,140,194)"
           tabBarInactiveTextColor="rgb(160,160,160)"
           locked={true}

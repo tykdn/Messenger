@@ -57,7 +57,7 @@ export default class SearchBar extends Component {
 const styles = StyleSheet.create({
   container: {
     height: theme.actionBar.height,
-    backgroundColor: theme.headerBackgroundColor,
+    backgroundColor: theme.pageBackgroundColor,
     justifyContent: "center",
     paddingTop: Platform.OS === "ios" ? px2dp(20) : 0
   },
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginRight: px2dp(8),
     marginLeft: px2dp(8),
-    borderRadius: px2dp(3)
+    borderRadius: px2dp(8)
   },
   text: {
     fontSize: px2dp(15),
