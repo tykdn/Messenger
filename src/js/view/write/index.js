@@ -146,7 +146,7 @@ class Item extends Component {
         <View style={styles.avatar}>
           <TouchableOpacity onPress={this.go.bind(this, "My")}>
             <Avatar
-              size={px2dp(30)}
+              size={px2dp(36)}
               image={{
                 uri:
                   "https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1545814744&di=88720d8768c3beec516c92686d5f2270&src=http://images.freeimages.com/images/large-previews/461/dog-1379928.jpg"
@@ -154,15 +154,23 @@ class Item extends Component {
             />
           </TouchableOpacity>
         </View>
+        <View style={{
+          height: px2dp(49),
+            flex:1,
+            justifyContent:'center',
+            borderBottomWidth:1,
+            borderBottomColor:'#ccc'
+        }}>
         <Text
           style={{
             fontSize: theme.actionBar.fontSize,
             color: "#000",
-            marginLeft: px2dp(20)
+            marginLeft: px2dp(10),
           }}
         >
           {name}
         </Text>
+        </View>
       </View>
     );
   }
@@ -190,7 +198,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     paddingLeft: px2dp(20),
     paddingRight: px2dp(20),
-    borderBottomColor: "#ccc",
-    borderBottomWidth: 1 / PixelRatio.get()
+    // borderBottomColor: "#ccc",
+    // borderBottomWidth: 1 / PixelRatio.get()
   }
 });
