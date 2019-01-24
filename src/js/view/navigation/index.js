@@ -1,9 +1,8 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
-import Icon  from "react-native-vector-icons/FontAwesome";
+import Icon from "react-native-vector-icons/FontAwesome";
 import Home from "../home";
-
 
 const HomeScreen = () => (
   <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -66,19 +65,20 @@ const AppNavigator = createBottomTabNavigator({
         />
       )
     }
-  },  Discover: {
-        screen: HomeScreen,
-        navigationOptions: {
-            tabBarLabel: "发现",
-            tabBarIcon: ({ tintColor, focused }) => (
-                <Icon
-                    name={"th-list"}
-                    size={26}
-                    style={focused ? { color: tintColor } : { color: "#dbdbdb" }}
-                />
-            )
-        }
-    },
+  },
+  Discover: {
+    screen: HomeScreen,
+    navigationOptions: {
+      tabBarLabel: "发现",
+      tabBarIcon: ({ tintColor, focused }) => (
+        <Icon
+          name={"th-list"}
+          size={26}
+          style={focused ? { color: tintColor } : { color: "#dbdbdb" }}
+        />
+      )
+    }
+  }
 });
 const Page = createAppContainer(AppNavigator);
 export default Page;

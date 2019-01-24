@@ -154,22 +154,24 @@ class Item extends Component {
             />
           </TouchableOpacity>
         </View>
-        <View style={{
-          height: px2dp(49),
-            flex:1,
-            justifyContent:'center',
-            borderBottomWidth:1,
-            borderBottomColor:'#ccc'
-        }}>
-        <Text
+        <View
           style={{
-            fontSize: theme.actionBar.fontSize,
-            color: "#000",
-            marginLeft: px2dp(10),
+            height: px2dp(49),
+            flex: 1,
+            justifyContent: "center",
+            borderBottomWidth: 1,
+            borderBottomColor: "#ccc"
           }}
         >
-          {name}
-        </Text>
+          <Text
+            style={{
+              fontSize: theme.actionBar.fontSize,
+              color: "#000",
+              marginLeft: px2dp(10)
+            }}
+          >
+            {name}
+          </Text>
         </View>
       </View>
     );
@@ -197,7 +199,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "white",
     paddingLeft: px2dp(20),
-    paddingRight: px2dp(20),
+    paddingRight: px2dp(20)
     // borderBottomColor: "#ccc",
     // borderBottomWidth: 1 / PixelRatio.get()
   }

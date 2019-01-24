@@ -27,7 +27,7 @@ export default {
   scrollView: {
     fontSize: px2dp(15),
     underlineStyle: {
-      height:2,
+      height: 2,
       backgroundColor: "rgb(108,140,194)"
     }
   }

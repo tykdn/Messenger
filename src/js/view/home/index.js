@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { View, StyleSheet, TouchableOpacity,Text } from "react-native";
+import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import ScrollableTabView from "react-native-scrollable-tab-view";
 import Ionicons from "react-native-vector-icons/FontAwesome";
 import RCTDeviceEventEmitter from "RCTDeviceEventEmitter";
 import MessageList from "./messageList";
 import theme from "../../config/theme";
-import Call from '../call';
+import Call from "../call";
 import SearchBar from "../../component/searchBar";
 import px2dp from "../../utils/px2dp";
 import Avatar from "../../component/avatar";
@@ -15,8 +15,8 @@ export default class Home extends Component {
     super(props);
     this.navigation = this.props.navigation;
     this.state = {
-        page:0,
-      tabNames: ["消息", "在线", "群聊","通话"]
+      page: 0,
+      tabNames: ["消息", "在线", "群聊", "通话"]
     };
     // this.handleTabNames = this.handleTabNames.bind(this);
     this.showPage = this.showPage.bind(this);
@@ -57,12 +57,11 @@ export default class Home extends Component {
           tabBarInactiveTextColor="rgb(160,160,160)"
           initialPage={3}
           tabBarTextStyle={{ fontSize: theme.scrollView.fontSize }}
-          onChangeTab={(obj) => {
-              this.setState({
-                  page:obj.i
-              })
-          }
-          }
+          onChangeTab={obj => {
+            this.setState({
+              page: obj.i
+            });
+          }}
           tabBarUnderlineStyle={theme.scrollView.underlineStyle}
         >
           {this.showPage(this.state.tabNames)}
@@ -73,22 +72,21 @@ export default class Home extends Component {
   showPage(tabs) {
     const pages = [];
     tabs.map((item, i) => {
-      if(i!==3){
-          pages.push(
-              <MessageList
-                  tabLabel={item}
-                  key={i}
-                  tabLabel={item}
-                  navigation={this.navigation}
-                  tabLabel={item}
-                  key={i}
-                  tabTag={item}
-              />
-          );
-      }else{
-        pages.push(<Call  tabLabel={item} key={i}/>)
+      if (i !== 3) {
+        pages.push(
+          <MessageList
+            tabLabel={item}
+            key={i}
+            tabLabel={item}
+            navigation={this.navigation}
+            tabLabel={item}
+            key={i}
+            tabTag={item}
+          />
+        );
+      } else {
+        pages.push(<Call tabLabel={item} key={i} />);
       }
-
     });
     return pages;
   }
