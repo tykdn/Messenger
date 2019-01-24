@@ -13,42 +13,23 @@ import theme from "../../config/theme";
 import px2dp from "../../utils/px2dp";
 import Avatar from "../../component/avatar";
 
-export default class Call extends Component {
+export default class GroupChat extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: [
-        {
-          name: "xiaoxiaomin"
-        },
-        {
-          name: "xiaoxiaomin"
-        },
-        {
-          name: "xiaoxiaomin"
-        },
-        {
-          name: "xiaoxiaomin"
-        },
-        {
-          name: "xiaoxiaomin"
-        },
-        {
-          name: "xiaoxiaomin"
-        },
-        {
-          name: "xiaoxiaomin"
-        }
-      ]
+      list: []
     };
     this.rendlist = this.rendlist.bind(this);
   }
   rendlist() {
+    const { list } = this.state;
     return (
       <View style={{ marginBottom: 40 }}>
-        {this.state.list.map((item, index) => (
-          <Item key={index} name={item.name} />
-        ))}
+        {list.length > 0 ? (
+          list.map((item, index) => <Item key={index} name={item.name} />)
+        ) : (
+          <NoDota />
+        )}
       </View>
     );
   }
@@ -75,7 +56,7 @@ export default class Call extends Component {
               />
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={{ color: "black" }}>开始群通话</Text>
+              <Text style={{ color: "black" }}>创建群聊</Text>
             </View>
           </View>
           <View
@@ -84,7 +65,7 @@ export default class Call extends Component {
               justifyContent: "center"
             }}
           >
-            <Text style={styles.text}>推荐用户</Text>
+            <Text style={styles.text}>你的群聊</Text>
           </View>
         </View>
         <View style={{ flex: 1 }}>
@@ -153,11 +134,38 @@ class Item extends Component {
     );
   }
 }
-
+class NoDota extends Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: "center" }}>
+        <View style={styles.nodata}>
+          <Text style={{ fontSize: 16, color: "black", lineHeight: 20 }}>
+            创建群聊
+          </Text>
+          <Text style={{ fontSize: 14 }}>与好友开始对话</Text>
+        </View>
+        <Text
+          style={{ color: "rgb(67,139,236)", fontSize: 16, paddingTop: 15 }}
+        >
+          创建
+        </Text>
+      </View>
+    );
+  }
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white"
+  },
+  nodata: {
+    flex: 1,
+    width: "100%",
+    borderBottomWidth: 1,
+    height: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    borderBottomColor: "#ccc"
   },
   input: {
     height: px2dp(80)

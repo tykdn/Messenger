@@ -6,6 +6,7 @@ import RCTDeviceEventEmitter from "RCTDeviceEventEmitter";
 import MessageList from "./messageList";
 import theme from "../../config/theme";
 import Call from "../call";
+import GroupChat from "../groupChat";
 import SearchBar from "../../component/searchBar";
 import px2dp from "../../utils/px2dp";
 import Avatar from "../../component/avatar";
@@ -72,7 +73,7 @@ export default class Home extends Component {
   showPage(tabs) {
     const pages = [];
     tabs.map((item, i) => {
-      if (i !== 3) {
+      if (i === 0) {
         pages.push(
           <MessageList
             tabLabel={item}
@@ -84,7 +85,24 @@ export default class Home extends Component {
             tabTag={item}
           />
         );
-      } else {
+      }
+      if (i === 1) {
+        pages.push(
+          <MessageList
+            tabLabel={item}
+            key={i}
+            tabLabel={item}
+            navigation={this.navigation}
+            tabLabel={item}
+            key={i}
+            tabTag={item}
+          />
+        );
+      }
+      if (i === 2) {
+        pages.push(<GroupChat tabLabel={item} key={i} />);
+      }
+      if (i === 3) {
         pages.push(<Call tabLabel={item} key={i} />);
       }
     });
