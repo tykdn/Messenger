@@ -7,6 +7,7 @@ import MessageList from "./messageList";
 import theme from "../../config/theme";
 import Call from "../call";
 import GroupChat from "../groupChat";
+import Online from "../online";
 import SearchBar from "../../component/searchBar";
 import px2dp from "../../utils/px2dp";
 import Avatar from "../../component/avatar";
@@ -87,17 +88,7 @@ export default class Home extends Component {
         );
       }
       if (i === 1) {
-        pages.push(
-          <MessageList
-            tabLabel={item}
-            key={i}
-            tabLabel={item}
-            navigation={this.navigation}
-            tabLabel={item}
-            key={i}
-            tabTag={item}
-          />
-        );
+        pages.push(<Online tabLabel={item} key={i} />);
       }
       if (i === 2) {
         pages.push(<GroupChat tabLabel={item} key={i} />);
