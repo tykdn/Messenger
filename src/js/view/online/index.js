@@ -107,18 +107,16 @@ class NoDota extends Component {
     return (
       <View style={{ flex: 1, alignItems: "center" }}>
         <View style={styles.nodata}>
-          <Text style={{ fontSize: 16, color: "black", lineHeight: 20 }}>
-            无活跃用户
-          </Text>
-          <Text style={{ fontSize: 14 }}>
+          <Text style={{ fontSize: 18, marginBottom: 20 }}>无活跃用户</Text>
+          <Text style={{ fontSize: 14, textAlign: "center" }}>
             你将在这里看到在线的其他用户。你也可以邀请更多好友加入Messenger。
           </Text>
+          <Text
+            style={{ color: "rgb(67,139,236)", fontSize: 16, paddingTop: 40 }}
+          >
+            邀请用户
+          </Text>
         </View>
-        <Text
-          style={{ color: "rgb(67,139,236)", fontSize: 16, paddingTop: 15 }}
-        >
-          邀请用户
-        </Text>
       </View>
     );
   }
@@ -130,7 +128,8 @@ const styles = StyleSheet.create({
   },
   nodata: {
     flex: 1,
-    width: "100%",
+    width: "80%",
+    height: 400,
     justifyContent: "center",
     alignItems: "center"
   },
