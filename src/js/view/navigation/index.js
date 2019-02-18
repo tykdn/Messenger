@@ -3,6 +3,7 @@ import { Text, View } from "react-native";
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Home from "../home";
+import Users from "../users";
 
 const HomeScreen = () => (
   <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -31,7 +32,7 @@ const AppNavigator = createBottomTabNavigator({
     }
   },
   User: {
-    screen: ProfileScreen,
+    screen: Users,
     navigationOptions: {
       tabBarLabel: "用户",
       tabBarIcon: ({ tintColor, focused }) => (
