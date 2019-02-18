@@ -1,13 +1,35 @@
 A React Native project.
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+```
+git clone https://github.com/tykdn/Messenger.git`
+```
+with yarn
+```
+yarn
+```
+or with npm:
+```
+npm install
+```
+```
+npm link
+```
 
-### `npm run build`
+## Usage
 
-Runs the app.<br>
+In the project directory:<br/>
 
-### `npm run prettier`
-
+run the app
+```
+npm start
+```
 format code
+```
+npm run prettier
+```
+build android apk
+```
+npm run build_android
+```

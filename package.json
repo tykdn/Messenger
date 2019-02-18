@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start": "react-native run-android",
     "test": "jest",
-    "build": "react-native run-android",
+    "build_android": "cd android && ./gradlew assembleRelease",
     "prettier": "yarn --silent prettier:files | xargs prettier --write",
     "prettier:files": "find .  -name \"*.js\"  | grep -v -f .eslintignore"
   },
