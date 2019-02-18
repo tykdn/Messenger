@@ -15,17 +15,13 @@ import theme from "../../config/theme";
 import px2dp from "../../utils/px2dp";
 import Avatar from "../../component/avatar";
 import Ionicons from "react-native-vector-icons/FontAwesome";
-class UselessTextInput extends Component {
-  render() {
-    return <TextInput {...this.props} editable={true} maxLength={40} />;
-  }
-}
+
 export default class Users extends Component {
   constructor(props) {
     super(props);
     this.state = {
       text: "",
-      list: [
+      iconList: [
         {
           name: "扫描代码",
           value: "!",
@@ -50,6 +46,20 @@ export default class Users extends Component {
           key: "PhoneNumber",
           icon: { key: "slack", color: "white", bgc: "rgb(87,94,207)" }
         }
+      ],
+      itmeList:[
+          {
+            key:'phone',
+            text:'上传通讯录'
+          },
+          {
+            key:'instagram',
+            text:'关注 Instagram'
+          },
+          {
+            key:'database',
+            text:'全部用户'
+          }
       ]
     };
     this.rendlist = this.rendlist.bind(this);
@@ -57,8 +67,8 @@ export default class Users extends Component {
   rendlist() {
     return (
       <View style={{ marginBottom: 40 }}>
-        {this.state.list.map((item, index) => (
-          <Item key={index} name={item.name} />
+        {this.state.itmeList.map((item, index) => (
+          <Item key={index} name={item.key} text={item.text} />
         ))}
       </View>
     );
@@ -80,7 +90,7 @@ export default class Users extends Component {
               alignItems: "center"
             }}
           >
-            {this.state.list.map((item, index) => (
+            {this.state.iconList.map((item, index) => (
               <IconItem
                 key={index}
                 goto={item.key}
@@ -101,30 +111,27 @@ export default class Users extends Component {
 
 class Item extends Component {
   static propTypes = {
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    text: PropTypes.string,
   };
   go() {}
   render() {
-    const { name } = this.props;
+    const { name ,text} = this.props;
     px2dp(40);
     return (
       <View style={styles.item}>
         <View style={styles.avatar}>
           <TouchableOpacity onPress={this.go.bind(this, "My")}>
-            <Avatar
-              size={px2dp(36)}
-              image={{
-                uri:
-                  "https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1545814744&di=88720d8768c3beec516c92686d5f2270&src=http://images.freeimages.com/images/large-previews/461/dog-1379928.jpg"
-              }}
-            />
+              <Ionicons name={name} size={px2dp(25)} color={'rgb(24, 110, 232)'} />
           </TouchableOpacity>
         </View>
         <View
           style={{
             height: px2dp(49),
             flex: 1,
-            justifyContent: "center",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
             borderBottomWidth: 1,
             borderBottomColor: "#ccc"
           }}
@@ -133,11 +140,16 @@ class Item extends Component {
             style={{
               fontSize: theme.actionBar.fontSize,
               color: "#000",
-              marginLeft: px2dp(10)
+              marginLeft: px2dp(15)
             }}
           >
-            {name}
+            {text}
           </Text>
+          <Ionicons
+              name={"chevron-right"}
+              size={20}
+              style={{ color: "#ccc", marginRight: 10 }}
+          />
         </View>
       </View>
     );
@@ -155,7 +167,6 @@ class IconItem extends Component {
     return (
       <View
         style={{
-          height: px2dp(49),
           alignItems: "center",
           backgroundColor: "white",
           marginLeft: px2dp(20),
@@ -167,8 +178,8 @@ class IconItem extends Component {
         </View>
         <Text
           style={{
-            fontSize: theme.actionBar.fontSize,
-            color: "rgb(111,159,200)",
+            fontSize: 14,
+            color: "rgb(24, 110, 232)",
               paddingTop: 10,
               paddingBottom: 10
           }}
@@ -193,7 +204,9 @@ const styles = StyleSheet.create({
     paddingLeft: px2dp(20)
   },
   avatar: {
-    height: px2dp(40)
+    height: px2dp(40),
+    justifyContent: "center",
+    alignItems: "center"
   },
   icon: {
     width: px2dp(50),
