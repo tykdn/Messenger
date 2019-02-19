@@ -5,6 +5,7 @@
   "scripts": {
     "start": "react-native run-android",
     "test": "jest",
+    "tool":"react-devtools",
     "build_android": "cd android && ./gradlew assembleRelease",
     "prettier": "yarn --silent prettier:files | xargs prettier --write",
     "prettier:files": "find .  -name \"*.js\"  | grep -v -f .eslintignore"

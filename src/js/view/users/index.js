@@ -14,7 +14,7 @@ import TextButton from "../../component/textButton";
 import theme from "../../config/theme";
 import px2dp from "../../utils/px2dp";
 import Avatar from "../../component/avatar";
-import Ionicons from "react-native-vector-icons/FontAwesome";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 export default class Users extends Component {
   constructor(props) {
@@ -38,13 +38,13 @@ export default class Users extends Component {
           name: "请求",
           value: "m.me/tykdn",
           key: "Account",
-          icon: { key: "at", color: "white", bgc: "rgb(238,76,66)" }
+          icon: { key: "comment", color: "white", bgc: "rgb(238,76,66)" }
         },
         {
           name: "添加",
           value: "添加手机号",
           key: "PhoneNumber",
-          icon: { key: "slack", color: "white", bgc: "rgb(87,94,207)" }
+          icon: { key: "plus-circle", color: "white", bgc: "rgb(87,94,207)" }
         }
       ],
       itmeList:[
@@ -57,16 +57,43 @@ export default class Users extends Component {
             text:'关注 Instagram'
           },
           {
-            key:'database',
+            key:'th-list',
             text:'全部用户'
           }
-      ]
+      ],
+      avatorlist:[ {
+        name: "xiaoxiaomin",
+        greetable:true
+      }],
+      recomandlist: [
+        {
+            name: "xiaoxiaomin"
+        },
+        {
+            name: "xiaoxiaomin"
+        },
+        {
+            name: "xiaoxiaomin"
+        },
+        {
+            name: "xiaoxiaomin"
+        },
+        {
+            name: "xiaoxiaomin"
+        },
+        {
+            name: "xiaoxiaomin"
+        },
+        {
+            name: "xiaoxiaomin"
+        }
+    ]
     };
     this.rendlist = this.rendlist.bind(this);
   }
   rendlist() {
     return (
-      <View style={{ marginBottom: 40 }}>
+      <View>
         {this.state.itmeList.map((item, index) => (
           <Item key={index} name={item.key} text={item.text} />
         ))}
@@ -102,13 +129,118 @@ export default class Users extends Component {
           </View>
         </View>
         <View style={{ flex: 1 }}>
-          <ScrollView>{[this.rendlist()]}</ScrollView>
+          <ScrollView>
+              {[this.rendlist()]}
+              <View style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  height:50,
+                  paddingLeft: px2dp(20),
+                  paddingRight:  px2dp(20)
+              }}>
+                  <Text style={{color:'black'}}>更新</Text>
+                  <Text style={{color:'rgb(55,131,247)'}}>显示全部</Text>
+              </View>
+              {
+                  this.state.avatorlist.map((item, index) => (
+                      <AvatorItem key={index} item={item} />
+                  ))
+              }
+
+              <View style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  height:50,
+                  paddingLeft: px2dp(20),
+                  paddingRight:  px2dp(20)
+              }}>
+                  <Text style={{color:'black'}}>推荐用户</Text>
+              </View>
+              {
+                  this.state.recomandlist.map((item, index) => (
+                      <AvatorItem key={index} item={item} />
+                  ))
+              }
+          </ScrollView>
         </View>
       </View>
     );
   }
 }
-
+class AvatorItem extends Component {
+    static propTypes = {
+        item: PropTypes.object.isRequired
+    };
+    go() {}
+    render() {
+        const { item } = this.props;
+        px2dp(40);
+        return (
+            <View style={styles.item}>
+                <View style={styles.avatar}>
+                    <TouchableOpacity onPress={this.go.bind(this, "My")}>
+                        <Avatar
+                            size={px2dp(36)}
+                            image={{
+                                uri:
+                                    "https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1545814744&di=88720d8768c3beec516c92686d5f2270&src=http://images.freeimages.com/images/large-previews/461/dog-1379928.jpg"
+                            }}
+                        />
+                    </TouchableOpacity>
+                </View>
+                <View
+                    style={{
+                        height: px2dp(49),
+                        flex: 1,
+                        flexDirection: "row",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        borderBottomWidth: 0.5,
+                        borderBottomColor: "#ccc"
+                    }}
+                >
+                    <View style={{
+                        flexDirection: "column",
+                        justifyContent: "center"
+                    }}>
+                        <Text
+                            style={{
+                                fontSize: theme.actionBar.fontSize,
+                                color: "#000",
+                                marginLeft: px2dp(10)
+                            }}
+                        >
+                            {item.name}
+                        </Text>
+                        <Text
+                            style={{
+                                fontSize: 14,
+                                color: "rgb(193,193,193)",
+                                marginLeft: px2dp(10)
+                            }}
+                        >
+                            {item.name}
+                        </Text>
+                    </View>
+                    <View style={{ flexDirection: "row" }}>
+                        {item.greetable?null:<Icon
+                            name={"apple"}
+                            size={30}
+                            style={{ color: "rgb(193,193,193)", marginRight: 20 }}
+                        />}
+                        <Icon
+                            name={"times-circle"}
+                            size={30}
+                            style={{ color: "rgb(67,139,236)" }}
+                        />
+                    </View>
+                </View>
+            </View>
+        );
+    }
+}
 class Item extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
@@ -122,7 +254,7 @@ class Item extends Component {
       <View style={styles.item}>
         <View style={styles.avatar}>
           <TouchableOpacity onPress={this.go.bind(this, "My")}>
-              <Ionicons name={name} size={px2dp(25)} color={'rgb(24, 110, 232)'} />
+              <Icon name={name} size={px2dp(25)} color={'rgb(24, 110, 232)'} />
           </TouchableOpacity>
         </View>
         <View
@@ -145,7 +277,7 @@ class Item extends Component {
           >
             {text}
           </Text>
-          <Ionicons
+          <Icon
               name={"chevron-right"}
               size={20}
               style={{ color: "#ccc", marginRight: 10 }}
@@ -174,7 +306,7 @@ class IconItem extends Component {
         }}
       >
         <View style={{ ...styles.icon }}>
-          <Ionicons name={icon.key} size={px2dp(25)} color={icon.color} />
+          <Icon name={icon.key} size={px2dp(25)} color={icon.color} />
         </View>
         <Text
           style={{

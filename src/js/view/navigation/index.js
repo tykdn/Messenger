@@ -73,7 +73,7 @@ const AppNavigator = createBottomTabNavigator({
       tabBarLabel: "发现",
       tabBarIcon: ({ tintColor, focused }) => (
         <Icon
-          name={"th-list"}
+          name={"compass"}
           size={26}
           style={focused ? { color: tintColor } : { color: "#dbdbdb" }}
         />

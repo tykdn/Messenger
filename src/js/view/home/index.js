@@ -57,7 +57,7 @@ export default class Home extends Component {
           page={this.state.page}
           tabBarActiveTextColor="rgb(108,140,194)"
           tabBarInactiveTextColor="rgb(160,160,160)"
-          initialPage={3}
+          initialPage={0}
           tabBarTextStyle={{ fontSize: theme.scrollView.fontSize }}
           onChangeTab={obj => {
             this.setState({
