@@ -34,16 +34,24 @@ build android apk
 npm run build_android
 ```
 ##  Screenshot of the currently completed part
-![image](./screenshot/Screenshot_1550586437.png)
-![image](./screenshot/Screenshot_1550586472.png)
-![image](./screenshot/Screenshot_1550586700.png)
-![image](./screenshot/Screenshot_1550586722.png)
 
-![image](./screenshot/Screenshot_1550592312.png)
-![image](./screenshot/Screenshot_1550592318.png)
-![image](./screenshot/Screenshot_1550592321.png)
-![image](./screenshot/Screenshot_1550592325.png)
-![image](./screenshot/Screenshot_1550592331.png)
-![image](./screenshot/Screenshot_1550592338.png)
-![image](./screenshot/Screenshot_1550592347.png)
+
+<div style="display:flex;justify-content:space-around">
+  <img  src="./screenshot/Screenshot_1550592312.png"  alt="img" align=center  width="25%" height="25%" />
+  <img  src="./screenshot/Screenshot_1550592318.png"  alt="img" align=center  width="25%" height="25%" />
+  <img  src="./screenshot/1551100342005.jpg"  alt="img" align=center  width="25%" height="25%" />
+</div>
+<div style="display:flex;justify-content:space-around">
+  <img  src="./screenshot/Screenshot_1550592321.png"  alt="img" align=center  width="25%" height="25%" />
+  <img  src="./screenshot/Screenshot_1550592325.png"  alt="img" align=center  width="25%" height="25%" />
+  <img  src="./screenshot/Screenshot_1550592331.png"  alt="img" align=center  width="25%" height="25%" />
+</div>
+<div style="display:flex;justify-content:space-around">
+  <img  src="./screenshot/Screenshot_1550592338.png"  alt="img" align=center  width="25%" height="25%" />
+  <img  src="./screenshot/Screenshot_1550592347.png"  alt="img" align=center  width="25%" height="25%" />
+</div>
+
+## License
+
+- [MIT](LICENSE)
 
