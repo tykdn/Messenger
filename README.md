@@ -36,8 +36,8 @@ npm run build_android
 ##  Screenshot of the currently completed part
 
 
-<div style="display:flex;justify-content:space-around">
-  <img  src="./screenshot/Screenshot_1550592312.png"  alt="img" align=center  width="25%" height="25%" />
+<div style="display:flex;">
+  <img  src="./screenshot/Screenshot_1550592312.png" alt="img" align=center  width="25%" height="25%" />
   <img  src="./screenshot/Screenshot_1550592318.png"  alt="img" align=center  width="25%" height="25%" />
   <img  src="./screenshot/1551100342005.jpg"  alt="img" align=center  width="25%" height="25%" />
 </div>

@@ -1,3 +1,7 @@
+/**
+ * @author wmhuang, hwmfuture@outlook.com
+ * @version 0.0.1
+ */
 import React, { Component } from "react";
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import ScrollableTabView from "react-native-scrollable-tab-view";

@@ -1,3 +1,7 @@
+/**
+ * @author wmhuang, hwmfuture@outlook.com
+ * @version 0.0.1
+ */
 import React from "react";
 import { Text, View } from "react-native";
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";

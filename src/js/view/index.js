@@ -1,3 +1,7 @@
+/**
+ * @author wmhuang, hwmfuture@outlook.com
+ * @version 0.0.1
+ */
 import React from "react";
 import { createAppContainer, createStackNavigator } from "react-navigation";
 import Page from "./navigation";

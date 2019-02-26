@@ -1,3 +1,7 @@
+/**
+ * @author wmhuang, hwmfuture@outlook.com
+ * @version 0.0.1
+ */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import {
