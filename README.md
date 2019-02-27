@@ -1,7 +1,6 @@
-A React Native App which is imitate Messenger App of old version before 200.0.
+A React Native App which is imitate Messenger App of old version after 200.0.
 
-Because the Messenger App has a huge change after the 200.0 version，so I will start a new project to imitate the latest version of Messenger.
-If you want to know the new Messenger app project,welcome to the [new project](https://github.com/tykdn/Messenger).
+old project [Messenger-old](https://github.com/tykdn/Messenger-old).
 
 ## Installation
 
