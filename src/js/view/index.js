@@ -27,7 +27,15 @@ const RootStack = createStackNavigator(
     },
     Chat: {
       screen: Chat,
-      navigationOptions: () => ({})
+      navigationOptions: () => ({
+        // headerTransparent: true,
+        headerStyle: {
+          // marginBottom:50,
+          elevation: 0,
+          borderBottomWidth: 0
+        },
+        shadowOpacity: 0
+      })
     }
   },
   {

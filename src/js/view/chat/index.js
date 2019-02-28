@@ -3,7 +3,15 @@
  * @version 0.0.1
  */
 import React from "react";
-import { StyleSheet, Text, View, FlatList, Button } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Button,
+  TouchableOpacity,
+  TextInput
+} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import data from "./data/config";
 import config from "../../config";
@@ -48,22 +56,55 @@ export default class Chat extends React.Component {
   }
   static navigationOptions = ({ navigation }) => {
     return {
-      title: "xiaoxiaomin >",
       headerLeft: (
-        <View style={{ paddingLeft: px2dp(16) }}>
-          <TextButton
-            onPress={() => navigation.goBack()}
-            text={"< 首页"}
-            fontSize={px2dp(15)}
-            color={"rgb(92,133,194)"}
-          />
+        <View
+          style={{
+            paddingLeft: px2dp(16),
+            flexDirection: "row",
+            alignItems: "center"
+          }}
+        >
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Icon
+              name={"chevron-left"}
+              color={"rgb(41,106,252)"}
+              size={px2dp(25)}
+            />
+          </TouchableOpacity>
+          <View style={{ flexDirection: "row", marginLeft: 10 }}>
+            <View
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+                width: 50
+              }}
+            >
+              <Avatar
+                size={px2dp(30)}
+                image={{
+                  uri:
+                    "https://timgsa.baidu.com/timg?image&qualit" +
+                    "y=80&size=b10000_10000&sec=1545814744&di=88720d8768c3be" +
+                    "ec516c92686d5f2270&src=http://images.freeimages.com/images/large-previews/461/dog-1379928.jpg"
+                }}
+              />
+            </View>
+            <View>
+              <Text style={{ color: "black" }}>tykdn</Text>
+              <Text>Messenger</Text>
+            </View>
+          </View>
         </View>
       ),
       headerRight: (
         <View style={{ paddingRight: px2dp(16) }}>
-          <Icon name={"phone"} size={px2dp(20)} />
+          <Icon name={"phone"} size={px2dp(25)} color={"rgb(41,106,252)"} />
         </View>
       ),
+      headerStyle: {
+        elevation: 0,
+        borderBottomWidth: 0
+      },
       headerTintColor: "#000",
       headerTitleStyle: {
         flex: 1,
@@ -171,56 +212,79 @@ export default class Chat extends React.Component {
   }
 
   renderCustomActions() {
-    const { key } = this.state;
-    const action =
-      key === "facility" ? (
+    return (
+      <View
+        style={{
+          height: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "row",
+          flex: 1
+        }}
+      >
         <View
-          style={{
-            height: "100%",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "row",
-            flex: 1
-          }}
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
-          <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <Icon
-              name={"plus-circle"}
-              size={px2dp(20)}
-              color={"rgb(71,133,246)"}
-              style={{}}
-            />
-          </View>
-          <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <Icon name={"camera"} size={px2dp(20)} color={"#ccc"} />
-          </View>
-          <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <Icon name={"image"} size={px2dp(20)} color={"#ccc"} style={{}} />
-          </View>
-          <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <Icon
-              name={"microphone"}
-              size={px2dp(20)}
-              color={"#ccc"}
-              style={{}}
-            />
-          </View>
+          <Icon
+            name={"plus-circle"}
+            size={px2dp(20)}
+            color={"rgb(41,106,252)"}
+          />
         </View>
-      ) : null;
-    return action;
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <Icon name={"camera"} size={px2dp(20)} color={"rgb(41,106,252)"} />
+        </View>
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <Icon
+            name={"image"}
+            size={px2dp(20)}
+            color={"rgb(41,106,252)"}
+            style={{}}
+          />
+        </View>
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <Icon
+            name={"microphone"}
+            size={px2dp(20)}
+            color={"rgb(41,106,252)"}
+          />
+        </View>
+        <View style={{ width: 200, background: "red", height: 40 }}>
+          <TextInput
+            style={{
+              height: 40,
+              borderColor: "red",
+              borderRadius: 10,
+              width: 100,
+              background: "red"
+            }}
+            onChangeText={text => this.setState({ text })}
+            value={this.state.text}
+          />
+        </View>
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <Icon
+            name={"thumbs-up"}
+            size={px2dp(20)}
+            color={"rgb(41,106,252)"}
+            style={{}}
+          />
+        </View>
+      </View>
+    );
   }
   renderInputToolbar() {
     const { key } = this.state;
     const footer = null;
-    return footer;
+    return this.renderCustomActions();
   }
 
   renderBubble(props) {
@@ -335,10 +399,8 @@ export default class Chat extends React.Component {
           }}
           renderChatFooter={this.renderCustormConentpart}
           renderCustormHeadpart={this.renderCustormHeadpart}
-          renderInputToolbar={
-            this.renderInputToolbar() ? this.renderInputToolbar : null
-          }
-          renderActions={this.renderCustomActions}
+          renderInputToolbar={this.renderInputToolbar}
+          // renderActions={this.renderCustomActions}
           renderBubble={this.renderBubble}
           renderSystemMessage={this.renderSystemMessage}
           // renderCustomView={this.renderCustomView}
