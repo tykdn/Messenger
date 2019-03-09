@@ -8,7 +8,7 @@ import mySetting from "../../config/mySettings";
 import { Text, View, StyleSheet, PixelRatio, ScrollView } from "react-native";
 import Ionicons from "react-native-vector-icons/FontAwesome";
 import TextButton from "../../component/textButton";
-import theme from "../../config/theme";
+import theme from "../../theme/theme";
 import px2dp from "../../utils/px2dp";
 import Avatar from "../../component/avatar";
 

@@ -12,7 +12,7 @@ import {
   Dimensions
 } from "react-native";
 import px2dp from "../../utils/px2dp";
-import theme from "../../config/theme";
+import theme from "../../theme/theme";
 
 const Button = props => {
   if (Platform.OS === "android") {

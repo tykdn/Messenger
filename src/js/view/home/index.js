@@ -3,11 +3,11 @@
  * @version 0.0.1
  */
 import React, { Component } from "react";
-import { View, StyleSheet} from "react-native";
+import { View, StyleSheet } from "react-native";
 import MessageList from "./messageList";
-import theme from "../../config/theme";
+import theme from "../../theme/theme";
 import SearchBar from "../../component/searchBar";
-import Header from "../../component/header"
+import Header from "../../component/header";
 
 export default class Home extends Component {
   constructor(props) {
@@ -17,9 +17,9 @@ export default class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-          <Header/>
-          <SearchBar/>
-          <MessageList  navigation={this.navigation}/>
+        <Header />
+        <SearchBar />
+        <MessageList navigation={this.navigation} />
       </View>
     );
   }

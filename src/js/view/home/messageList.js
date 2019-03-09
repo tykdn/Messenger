@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ScrollView, RefreshControl } from "react-native";
 import InformationList from "../../component/informationList";
-import theme from "../../config/theme";
+import theme from "../../theme/theme";
 
 export default class MessageList extends Component {
   constructor(props) {

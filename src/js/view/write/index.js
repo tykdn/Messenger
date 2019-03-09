@@ -14,7 +14,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import TextButton from "../../component/textButton";
-import theme from "../../config/theme";
+import theme from "../../theme/theme";
 import px2dp from "../../utils/px2dp";
 import Avatar from "../../component/avatar";
 class UselessTextInput extends Component {

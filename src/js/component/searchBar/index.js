@@ -8,7 +8,7 @@ import {
   TouchableNativeFeedback,
   TouchableOpacity
 } from "react-native";
-import theme from "../../config/theme";
+import theme from "../../theme/theme";
 import px2dp from "../../utils/px2dp";
 import Icon from "react-native-vector-icons/Ionicons";
 

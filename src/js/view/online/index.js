@@ -13,7 +13,7 @@ import {
 } from "react-native";
 import TextButton from "../../component/textButton";
 import Icon from "react-native-vector-icons/FontAwesome";
-import theme from "../../config/theme";
+import theme from "../../theme/theme";
 import px2dp from "../../utils/px2dp";
 import Avatar from "../../component/avatar";
 

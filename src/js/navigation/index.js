@@ -6,8 +6,9 @@ import React from "react";
 import { Text, View } from "react-native";
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import Icon from "react-native-vector-icons/FontAwesome";
-import Home from "../home";
-import Users from "../users";
+import theme from "../theme/theme";
+import Home from "../view/home/index";
+import Users from "../view/users/index";
 
 const HomeScreen = () => (
   <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -30,7 +31,11 @@ const AppNavigator = createBottomTabNavigator({
         <Icon
           name={"comment"}
           size={26}
-          style={focused ? { color: tintColor } : { color: "#dbdbdb" }}
+          style={
+            focused
+              ? { color: theme.footerIconSelectColor }
+              : { color: theme.footerIconColor }
+          }
         />
       )
     }
@@ -43,7 +48,11 @@ const AppNavigator = createBottomTabNavigator({
         <Icon
           name={"users"}
           size={26}
-          style={focused ? { color: tintColor } : { color: "#dbdbdb" }}
+          style={
+            focused
+              ? { color: theme.footerIconSelectColor }
+              : { color: theme.footerIconColor }
+          }
         />
       )
     }
@@ -79,7 +88,11 @@ const AppNavigator = createBottomTabNavigator({
         <Icon
           name={"compass"}
           size={26}
-          style={focused ? { color: tintColor } : { color: "#dbdbdb" }}
+          style={
+            focused
+              ? { color: theme.footerIconSelectColor }
+              : { color: theme.footerIconColor }
+          }
         />
       )
     }
