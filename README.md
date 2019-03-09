@@ -35,23 +35,23 @@ build android apk
 ```
 npm run build_android
 ```
-##  Screenshot of the currently completed part
 
 
-<div style="display:flex;">
-  <img  src="./screenshot/Screenshot_1550592312.png" alt="img" align=center  width="25%" height="25%" />
-  <img  src="./screenshot/Screenshot_1550592318.png"  alt="img" align=center  width="25%" height="25%" />
-  <img  src="./screenshot/1551100342005.jpg"  alt="img" align=center  width="25%" height="25%" />
-</div>
-<div style="display:flex;justify-content:space-around">
-  <img  src="./screenshot/Screenshot_1550592321.png"  alt="img" align=center  width="25%" height="25%" />
-  <img  src="./screenshot/Screenshot_1550592325.png"  alt="img" align=center  width="25%" height="25%" />
-  <img  src="./screenshot/Screenshot_1550592331.png"  alt="img" align=center  width="25%" height="25%" />
-</div>
-<div style="display:flex;justify-content:space-around">
-  <img  src="./screenshot/Screenshot_1550592338.png"  alt="img" align=center  width="25%" height="25%" />
-  <img  src="./screenshot/Screenshot_1550592347.png"  alt="img" align=center  width="25%" height="25%" />
-</div>
+## TODO List
+- [x] Conversation list page
+- [x] Conversation page
+- [x] Group Conversation page
+- [x] modify page
+- [x] add contact page
+- [x] online page
+- [x] personal center page
+- [ ] find page
+- [ ] game page
+- [ ] video chat page
+- [ ] take photo page 
+- [ ] use redux Refactor data flow
+- [ ] shop page
+- [ ] so many third-level page page
 
 ## License
 
