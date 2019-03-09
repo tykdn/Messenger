@@ -28,7 +28,7 @@ const AppNavigator = createBottomTabNavigator({
       tabBarLabel: "首页",
       tabBarIcon: ({ tintColor, focused }) => (
         <Icon
-          name={"home"}
+          name={"comment"}
           size={26}
           style={focused ? { color: tintColor } : { color: "#dbdbdb" }}
         />
@@ -48,29 +48,29 @@ const AppNavigator = createBottomTabNavigator({
       )
     }
   },
-  Camera: {
-    screen: HomeScreen,
-    navigationOptions: {
-      tabBarLabel: "",
-      tabBarIcon: ({ tintColor, focused }) => (
-        <Icon name={"camera"} size={26} style={{ color: tintColor }} />
-      )
-    }
-  },
+  // Camera: {
+  //   screen: HomeScreen,
+  //   navigationOptions: {
+  //     tabBarLabel: "",
+  //     tabBarIcon: ({ tintColor, focused }) => (
+  //       <Icon name={"camera"} size={26} style={{ color: tintColor }} />
+  //     )
+  //   }
+  // },
 
-  Game: {
-    screen: ProfileScreen,
-    navigationOptions: {
-      tabBarLabel: "游戏",
-      tabBarIcon: ({ tintColor, focused }) => (
-        <Icon
-          name={"gamepad"}
-          size={26}
-          style={focused ? { color: tintColor } : { color: "#dbdbdb" }}
-        />
-      )
-    }
-  },
+  // Game: {
+  //   screen: ProfileScreen,
+  //   navigationOptions: {
+  //     tabBarLabel: "游戏",
+  //     tabBarIcon: ({ tintColor, focused }) => (
+  //       <Icon
+  //         name={"gamepad"}
+  //         size={26}
+  //         style={focused ? { color: tintColor } : { color: "#dbdbdb" }}
+  //       />
+  //     )
+  //   }
+  // },
   Discover: {
     screen: HomeScreen,
     navigationOptions: {

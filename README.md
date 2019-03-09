@@ -16,7 +16,7 @@ or with npm:
 npm install
 ```
 ```
-npm link
+react-native link
 ```
 
 ## Usage

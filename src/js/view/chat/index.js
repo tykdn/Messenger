@@ -18,7 +18,6 @@ import {
     SystemMessage
 } from "../../component/chat/GiftedChat";
 import px2dp from "../../utils/px2dp";
-import TextButton from "../../component/textButton";
 import Avatar from "../../component/avatar";
 
 
