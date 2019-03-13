@@ -43,7 +43,7 @@ export default class Header extends Component {
 
 const styles = StyleSheet.create({
   header: {
-    height: px2dp(50),
+    height: px2dp(60),
     justifyContent: "space-between",
     backgroundColor: theme.headerBackgroundColor,
     flexDirection: "row"

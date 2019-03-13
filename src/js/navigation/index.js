@@ -15,13 +15,6 @@ const HomeScreen = () => (
     <Text>HomeScreen</Text>
   </View>
 );
-
-const ProfileScreen = () => (
-  <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-    <Text>ProfileScreen</Text>
-  </View>
-);
-
 const AppNavigator = createBottomTabNavigator({
   Home: {
     screen: Home,
@@ -33,7 +26,7 @@ const AppNavigator = createBottomTabNavigator({
           size={26}
           style={
             focused
-              ? { color: theme.footerIconSelectColor }
+              ? { color: theme.footerIconSelectColor}
               : { color: theme.footerIconColor }
           }
         />
@@ -87,7 +80,7 @@ const AppNavigator = createBottomTabNavigator({
       tabBarIcon: ({ tintColor, focused }) => (
         <Icon
           name={"compass"}
-          size={26}
+          size={30}
           style={
             focused
               ? { color: theme.footerIconSelectColor }
@@ -97,6 +90,12 @@ const AppNavigator = createBottomTabNavigator({
       )
     }
   }
+},{
+    tabBarOptions:{showLabel:false,
+        style:{
+          marginLeft:"23%", borderTopWidth:0,elevation: 0,width:230,justifyContent:'center',alignItems:'center',alignContent: "center",backgroundColor:'rgba(255, 255, 255, 0)'
+        },
+        labelStyle:{}}
 });
 const Page = createAppContainer(AppNavigator);
 export default Page;
