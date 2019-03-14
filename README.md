@@ -1,6 +1,22 @@
-A React Native App which is imitate Messenger App of old version after 200.0.
+<p align="center">
+  <a href="">
+    <img alt="Messenger" src="./screenshot/logo.jpeg" width="144">
+  </a>
+</p>
+<h3 align="center">
+  Messenger
+</h3>
 
-old project [Messenger-old](https://github.com/tykdn/Messenger-old).
+<p align="center">
+ A React Native App which is imitate Messenger App of version after 200.0.
+</p>
+
+## Old project 
+[Messenger-old](https://github.com/tykdn/Messenger-old) of version before 200.0.
+
+## Technology stack
+
+React Native@0.57.8、react-navigation@3.0.9、redux@4.0.1、react-redux@6.0.1、redux-saga@1.0.2
 
 ## Installation
 
@@ -49,7 +65,7 @@ npm run build_android
 - [ ] game page
 - [ ] video chat page
 - [ ] take photo page 
-- [ ] use redux Refactor data flow
+- [x] use redux Refactor data flow
 - [ ] shop page
 - [ ] so many third-level page page
 
