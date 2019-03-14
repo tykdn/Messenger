@@ -5,7 +5,7 @@
   "scripts": {
     "start": "react-native run-android",
     "test": "jest",
-    "tool":"react-devtools",
+    "tool": "react-devtools",
     "build_android": "cd android && ./gradlew assembleRelease",
     "prettier": "yarn --silent prettier:files | xargs prettier --write",
     "prettier:files": "find .  -name \"*.js\"  | grep -v -f .eslintignore"
@@ -25,7 +25,10 @@
     "react-native-scrollable-tab-view": "^0.10.0",
     "react-native-snap-carousel": "^3.7.5",
     "react-native-vector-icons": "6.0.2",
-    "react-navigation": "^3.0.9"
+    "react-navigation": "^3.0.9",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "redux-saga": "^1.0.2"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
