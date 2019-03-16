@@ -9,6 +9,7 @@ import Write from "./write";
 import My from "./my";
 import Chat from "./chat";
 import Users from "./users";
+import IdCard from "./idCard";
 
 const RootStack = createStackNavigator(
   {
@@ -16,6 +17,17 @@ const RootStack = createStackNavigator(
       screen: Page,
       navigationOptions: () => ({
         header: null
+      })
+    },
+    IdCard: {
+      screen: IdCard,
+      navigationOptions: () => ({
+        headerStyle: {
+          // marginBottom:50,
+          elevation: 0,
+          borderBottomWidth: 0
+        },
+        shadowOpacity: 0
       })
     },
     Write: {

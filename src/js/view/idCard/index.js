@@ -5,11 +5,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
-import ListItem from "../../component/listItem";
 import Icon from "react-native-vector-icons/FontAwesome";
 import px2dp from "../../utils/px2dp";
+import ListItem from "../../component/listItem";
+import TextButton from "../../component/textButton";
 
-export default class Call extends Component {
+export default class IdCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -39,6 +40,39 @@ export default class Call extends Component {
     };
     this.rendlist = this.rendlist.bind(this);
   }
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: "用户",
+      headerLeft: (
+        <View
+          style={{
+            paddingLeft: px2dp(16),
+            flexDirection: "row",
+            textAlign: "center"
+          }}
+        >
+          <Icon
+            name={"chevron-left"}
+            size={px2dp(20)}
+            color={"black"}
+            style={{ marginRight: px2dp(10) }}
+          />
+          <TextButton
+            onPress={() => navigation.goBack()}
+            text={"返回"}
+            fontSize={px2dp(15)}
+            color={"black"}
+          />
+        </View>
+      ),
+      headerTintColor: "#000",
+      headerTitleStyle: {
+        flex: 1,
+        textAlign: "center",
+        fontWeight: "500"
+      }
+    };
+  };
   rendlist() {
     return (
       <View style={{ marginBottom: 40 }}>
@@ -51,37 +85,8 @@ export default class Call extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.input}>
-          <View
-            style={{
-              borderBottomColor: "#dbdbdb",
-              borderBottomWidth: 0.5,
-              height: px2dp(50),
-              flex: 1,
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center"
-            }}
-          >
-            <View style={{ width: 60, paddingLeft: px2dp(20) }}>
-              <Icon
-                name={"users"}
-                size={20}
-                style={{ color: "rgb(67,139,236)" }}
-              />
-            </View>
-            <View style={{ flex: 1 }}>
-              <Text style={{ color: "black" }}>开始群通话</Text>
-            </View>
-          </View>
-          <View
-            style={{
-              height: px2dp(30),
-              justifyContent: "center"
-            }}
-          >
-            <Text style={styles.text}>推荐用户</Text>
-          </View>
+        <View style={styles.message}>
+          <Text style={styles.text}>MESSENGER用户</Text>
         </View>
         <View style={{ flex: 1 }}>
           <ScrollView>{this.rendlist()}</ScrollView>
@@ -95,8 +100,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white"
   },
-  input: {
-    height: px2dp(80)
+  message: {
+    height: px2dp(35)
   },
   text: {
     paddingLeft: px2dp(20),

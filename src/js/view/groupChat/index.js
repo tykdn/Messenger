@@ -73,7 +73,7 @@ export default class GroupChat extends Component {
           </View>
         </View>
         <View style={{ flex: 1 }}>
-          <ScrollView>{[this.rendlist()]}</ScrollView>
+          <ScrollView>{this.rendlist()}</ScrollView>
         </View>
       </View>
     );

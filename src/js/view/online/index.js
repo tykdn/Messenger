@@ -11,7 +11,6 @@ import {
   ScrollView,
   TouchableOpacity
 } from "react-native";
-import TextButton from "../../component/textButton";
 import Icon from "react-native-vector-icons/FontAwesome";
 import theme from "../../theme/theme";
 import px2dp from "../../utils/px2dp";
@@ -25,6 +24,7 @@ export default class Online extends Component {
     this.state = {
       list: []
     };
+    this.navigation = this.props.navigation;
     this.rendlist = this.rendlist.bind(this);
   }
   rendlist() {
@@ -45,7 +45,7 @@ export default class Online extends Component {
         <Header
           navigation={this.navigation}
           rightButtonArray={[
-            { icon: "address-book", page: "Write" },
+            { icon: "address-book", page: "IdCard" },
             { icon: "user-plus", page: "AddUser" }
           ]}
           name={"用户"}
@@ -60,7 +60,7 @@ export default class Online extends Component {
           }}
         />
         <View style={{ flex: 1 }}>
-          <ScrollView>{[this.rendlist()]}</ScrollView>
+          <ScrollView>{this.rendlist()}</ScrollView>
         </View>
       </View>
     );

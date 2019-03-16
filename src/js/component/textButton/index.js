@@ -18,13 +18,11 @@ export default class TextButton extends Component {
   render() {
     return (
       <TouchableOpacity onPress={this.props.onPress}>
-        <View style={{ height: px2dp(16) }}>
-          <Text
-            style={{ fontSize: this.props.fontSize, color: this.props.color }}
-          >
-            {this.props.text}
-          </Text>
-        </View>
+        <Text
+          style={{ fontSize: this.props.fontSize, color: this.props.color }}
+        >
+          {this.props.text}
+        </Text>
       </TouchableOpacity>
     );
   }

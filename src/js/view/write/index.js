@@ -10,13 +10,11 @@ import {
   StyleSheet,
   TextInput,
   PixelRatio,
-  ScrollView,
-  TouchableOpacity
+  ScrollView
 } from "react-native";
 import TextButton from "../../component/textButton";
-import theme from "../../theme/theme";
 import px2dp from "../../utils/px2dp";
-import Avatar from "../../component/avatar";
+import ListItem from "../../component/listItem";
 class UselessTextInput extends Component {
   render() {
     return <TextInput {...this.props} editable={true} maxLength={40} />;
@@ -88,7 +86,7 @@ export default class Write extends Component {
     return (
       <View style={{ marginBottom: 40 }}>
         {this.state.list.map((item, index) => (
-          <Item key={index} name={item.name} />
+          <ListItem key={index} name={item.name} />
         ))}
       </View>
     );
@@ -130,52 +128,7 @@ export default class Write extends Component {
           </View>
         </View>
         <View style={{ flex: 1 }}>
-          <ScrollView>{[this.rendlist()]}</ScrollView>
-        </View>
-      </View>
-    );
-  }
-}
-
-class Item extends Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired
-  };
-  go() {}
-  render() {
-    const { name } = this.props;
-    px2dp(40);
-    return (
-      <View style={styles.item}>
-        <View style={styles.avatar}>
-          <TouchableOpacity onPress={this.go.bind(this, "My")}>
-            <Avatar
-              size={px2dp(36)}
-              image={{
-                uri:
-                  "https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1545814744&di=88720d8768c3beec516c92686d5f2270&src=http://images.freeimages.com/images/large-previews/461/dog-1379928.jpg"
-              }}
-            />
-          </TouchableOpacity>
-        </View>
-        <View
-          style={{
-            height: px2dp(49),
-            flex: 1,
-            justifyContent: "center",
-            borderBottomWidth: 1,
-            borderBottomColor: "#ccc"
-          }}
-        >
-          <Text
-            style={{
-              fontSize: theme.actionBar.fontSize,
-              color: "#000",
-              marginLeft: px2dp(10)
-            }}
-          >
-            {name}
-          </Text>
+          <ScrollView>{this.rendlist()}</ScrollView>
         </View>
       </View>
     );
@@ -192,19 +145,5 @@ const styles = StyleSheet.create({
   },
   text: {
     paddingLeft: px2dp(20)
-  },
-  avatar: {
-    height: px2dp(40)
-  },
-  item: {
-    flexDirection: "row",
-    height: px2dp(49),
-    flex: 1,
-    alignItems: "center",
-    backgroundColor: "white",
-    paddingLeft: px2dp(20),
-    paddingRight: px2dp(20)
-    // borderBottomColor: "#ccc",
-    // borderBottomWidth: 1 / PixelRatio.get()
   }
 });
