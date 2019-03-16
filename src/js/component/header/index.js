@@ -12,7 +12,12 @@ import PropTypes from "prop-types";
 
 export default class Header extends Component {
   static propTypes = {
-    rightButtonArray: PropTypes.oneOfType([PropTypes.func, PropTypes.func]),
+    rightButtonArray: PropTypes.arrayOf(
+      PropTypes.shape({
+        icon: PropTypes.string,
+        page: PropTypes.string
+      })
+    ),
     name: PropTypes.string
   };
   static defaultProps = {
@@ -41,8 +46,8 @@ export default class Header extends Component {
           <Text style={styles.name}>{name}</Text>
         </View>
         <View style={styles.rightIcon}>
-          {rightButtonArray.map(item => (
-            <View style={theme.iconBg}>
+          {rightButtonArray.map((item, index) => (
+            <View style={theme.iconBg} key={index}>
               <TouchableOpacity onPress={this.go.bind(this, item.page)}>
                 <Icon
                   name={item.icon}

@@ -1,19 +1,22 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import {
-  Text,
   View,
   StyleSheet,
   Platform,
   TouchableNativeFeedback,
-  TouchableOpacity
+  TouchableOpacity,
+  TextInput
 } from "react-native";
+import { connect } from "react-redux";
+import Icon from "react-native-vector-icons/Ionicons";
 import theme from "../../theme/theme";
 import px2dp from "../../utils/px2dp";
-import Icon from "react-native-vector-icons/Ionicons";
+import { search } from "../../redux/actions";
 
-export default class SearchBar extends Component {
+class SearchBar extends Component {
   static propTypes = {
+    search: PropTypes.func,
     onPress: PropTypes.func
   };
 
@@ -48,7 +51,13 @@ export default class SearchBar extends Component {
           size={px2dp(25)}
           color={theme.headerTextColor}
         />
-        <Text style={styles.text}>搜索</Text>
+        <TextInput
+          style={styles.inputBox}
+          placeholder="搜索"
+          onChangeText={text => {
+            this.props.search(text);
+          }}
+        />
       </View>
     );
   }
@@ -72,9 +81,27 @@ const styles = StyleSheet.create({
     marginLeft: px2dp(8),
     borderRadius: px2dp(8)
   },
-  text: {
+  inputBox: {
+    height: 40,
+    flex: 1,
     fontSize: px2dp(15),
     color: theme.headerTextColor,
     marginLeft: px2dp(13)
   }
 });
+const mapStateToProps = state => {
+  const { text } = state;
+  return {
+    text
+  };
+};
+function mapDispatchToProps(dispatch) {
+  console.log(3232);
+  return {
+    search: text => dispatch(search(text))
+  };
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchBar);

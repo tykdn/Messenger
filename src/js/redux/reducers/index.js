@@ -1,8 +1,8 @@
-import { GET_FRIENDS_LIST } from "../actionTypes/index";
+import { GET_FRIENDS_LIST, SEARCH } from "../actionTypes/index";
 
 const initialState = {
   friendsList: [],
-  text: "what?"
+  text: ""
 };
 export default function(state = initialState, action) {
   console.log("reduces", action.type);
@@ -11,6 +11,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         friendsList: action.friendsList
+      };
+    case SEARCH:
+      return {
+        ...state,
+        text: action.text
       };
     default:
       return state;
