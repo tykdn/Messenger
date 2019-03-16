@@ -7,8 +7,8 @@ import { Text, View } from "react-native";
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import Icon from "react-native-vector-icons/FontAwesome";
 import theme from "../theme/theme";
-import Home from "../view/home/index";
-import Users from "../view/users/index";
+import Home from "../view/home";
+import Online from "../view/online";
 
 const HomeScreen = () => (
   <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -34,8 +34,8 @@ const AppNavigator = createBottomTabNavigator(
         )
       }
     },
-    User: {
-      screen: Users,
+    Users: {
+      screen: Online,
       navigationOptions: {
         tabBarLabel: "用户",
         tabBarIcon: ({ tintColor, focused }) => (

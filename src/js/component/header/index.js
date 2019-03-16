@@ -7,6 +7,7 @@ import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import theme from "../../theme/theme";
 import px2dp from "../../utils/px2dp";
+import SearchBar from "../searchBar";
 import Avatar from "../../component/avatar";
 import PropTypes from "prop-types";
 
@@ -32,32 +33,35 @@ export default class Header extends Component {
   render() {
     const { name, rightButtonArray } = this.props;
     return (
-      <View style={styles.header}>
-        <View style={styles.avatar}>
-          <TouchableOpacity onPress={this.go.bind(this, "My")}>
-            <Avatar
-              size={px2dp(50)}
-              image={{
-                uri:
-                  "https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1545814744&di=88720d8768c3beec516c92686d5f2270&src=http://images.freeimages.com/images/large-previews/461/dog-1379928.jpg"
-              }}
-            />
-          </TouchableOpacity>
-          <Text style={styles.name}>{name}</Text>
+      <View>
+        <View style={styles.header}>
+          <View style={styles.avatar}>
+            <TouchableOpacity onPress={this.go.bind(this, "My")}>
+              <Avatar
+                size={px2dp(50)}
+                image={{
+                  uri:
+                    "https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1545814744&di=88720d8768c3beec516c92686d5f2270&src=http://images.freeimages.com/images/large-previews/461/dog-1379928.jpg"
+                }}
+              />
+            </TouchableOpacity>
+            <Text style={styles.name}>{name}</Text>
+          </View>
+          <View style={styles.rightIcon}>
+            {rightButtonArray.map((item, index) => (
+              <View style={theme.iconBg} key={index}>
+                <TouchableOpacity onPress={this.go.bind(this, item.page)}>
+                  <Icon
+                    name={item.icon}
+                    size={px2dp(25)}
+                    color={theme.themeColor}
+                  />
+                </TouchableOpacity>
+              </View>
+            ))}
+          </View>
         </View>
-        <View style={styles.rightIcon}>
-          {rightButtonArray.map((item, index) => (
-            <View style={theme.iconBg} key={index}>
-              <TouchableOpacity onPress={this.go.bind(this, item.page)}>
-                <Icon
-                  name={item.icon}
-                  size={px2dp(25)}
-                  color={theme.themeColor}
-                />
-              </TouchableOpacity>
-            </View>
-          ))}
-        </View>
+        <SearchBar />
       </View>
     );
   }

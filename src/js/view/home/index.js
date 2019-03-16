@@ -7,7 +7,6 @@ import { View, StyleSheet, Text } from "react-native";
 import { connect } from "react-redux";
 import MessageList from "./messageList";
 import theme from "../../theme/theme";
-import SearchBar from "../../component/searchBar";
 import Header from "../../component/header";
 import PublishSnapshot from "../../component/publishSnapshot";
 import { getFriendsList } from "../../redux/actions";
@@ -33,8 +32,8 @@ class Home extends Component {
             { icon: "camera", page: "Write" },
             { icon: "edit", page: "Write" }
           ]}
+          name={"对话"}
         />
-        <SearchBar />
         <View>
           <Text>{text}</Text>
         </View>

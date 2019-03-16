@@ -8,6 +8,7 @@ import Page from "../navigation";
 import Write from "./write";
 import My from "./my";
 import Chat from "./chat";
+import Users from "./users";
 
 const RootStack = createStackNavigator(
   {
@@ -31,6 +32,16 @@ const RootStack = createStackNavigator(
         // headerTransparent: true,
         headerStyle: {
           // marginBottom:50,
+          elevation: 0,
+          borderBottomWidth: 0
+        },
+        shadowOpacity: 0
+      })
+    },
+    AddUser: {
+      screen: Users,
+      navigationOptions: () => ({
+        headerStyle: {
           elevation: 0,
           borderBottomWidth: 0
         },

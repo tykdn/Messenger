@@ -16,6 +16,8 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import theme from "../../theme/theme";
 import px2dp from "../../utils/px2dp";
 import Avatar from "../../component/avatar";
+import Header from "../../component/header";
+import PublishSnapshot from "../../component/publishSnapshot";
 
 export default class Online extends Component {
   constructor(props) {
@@ -40,6 +42,23 @@ export default class Online extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Header
+          navigation={this.navigation}
+          rightButtonArray={[
+            { icon: "address-book", page: "Write" },
+            { icon: "user-plus", page: "AddUser" }
+          ]}
+          name={"用户"}
+        />
+        <PublishSnapshot
+          navigation={this.navigation}
+          item={{
+            title: "你的快拍",
+            subTitle: "发布快拍",
+            icon: "plus",
+            page: "Write"
+          }}
+        />
         <View style={{ flex: 1 }}>
           <ScrollView>{[this.rendlist()]}</ScrollView>
         </View>
