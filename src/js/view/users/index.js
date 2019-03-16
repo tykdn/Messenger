@@ -359,10 +359,7 @@ const styles = StyleSheet.create({
   icon: {
     width: px2dp(50),
     height: px2dp(50),
-    borderTopRightRadius: px2dp(25),
-    borderBottomEndRadius: px2dp(25),
-    borderBottomLeftRadius: px2dp(25),
-    borderTopLeftRadius: px2dp(25),
+    borderRadius: px2dp(25),
     justifyContent: "center",
     backgroundColor: "rgb(55,131,247)",
     alignItems: "center"

@@ -96,16 +96,14 @@ const AppNavigator = createBottomTabNavigator(
     tabBarOptions: {
       showLabel: false,
       style: {
-        marginLeft: "23%",
+        marginLeft: "21%",
         borderTopWidth: 0,
         elevation: 0,
         width: 230,
         justifyContent: "center",
         alignItems: "center",
-        alignContent: "center",
         backgroundColor: "rgba(255, 255, 255, 0)"
-      },
-      labelStyle: {}
+      }
     }
   }
 );

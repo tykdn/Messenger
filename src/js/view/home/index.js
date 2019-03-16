@@ -8,8 +8,9 @@ import MessageList from "./messageList";
 import theme from "../../theme/theme";
 import SearchBar from "../../component/searchBar";
 import Header from "../../component/header";
-
+import PublishSnapshot from "../../component/publishSnapshot";
 import { getFriendsList } from "../../redux/actions";
+
 import store from "../../redux";
 
 export default class Home extends Component {
@@ -24,11 +25,26 @@ export default class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header />
+        <Header
+          navigation={this.navigation}
+          rightButtonArray={[
+            { icon: "camera", page: "Write" },
+            { icon: "edit", page: "Write" }
+          ]}
+        />
         <SearchBar />
         <View>
           <Text>{store.getState().text}</Text>
         </View>
+        <PublishSnapshot
+          navigation={this.navigation}
+          item={{
+            title: "你的快拍",
+            subTitle: "发布快拍",
+            icon: "plus",
+            page: ""
+          }}
+        />
         <MessageList navigation={this.navigation} />
       </View>
     );

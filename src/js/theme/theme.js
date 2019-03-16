@@ -12,6 +12,16 @@ export default {
   footerIconColor: "rgba(147,148,162,1)",
   footerIconSelectColor: "rgba(0,0,0,1)",
 
+  iconBg: {
+    justifyContent: "center",
+    marginRight: px2dp(10),
+    height: px2dp(40),
+    width: px2dp(40),
+    borderRadius: px2dp(40),
+    backgroundColor: "rgba(196,196,196,0.3)",
+    alignItems: "center"
+  },
+
   headerTextColor: "rgb(160, 160, 160)",
   searchColor: "rgb(235,235,235)",
 
