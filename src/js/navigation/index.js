@@ -8,6 +8,7 @@ import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import Icon from "react-native-vector-icons/FontAwesome";
 import theme from "../theme/theme";
 import Home from "../view/home";
+import Discovery from "../view/discovery";
 import Online from "../view/online";
 
 const HomeScreen = () => (
@@ -75,7 +76,7 @@ const AppNavigator = createBottomTabNavigator(
     //   }
     // },
     Discover: {
-      screen: HomeScreen,
+      screen: Discovery,
       navigationOptions: {
         tabBarLabel: "发现",
         tabBarIcon: ({ tintColor, focused }) => (
